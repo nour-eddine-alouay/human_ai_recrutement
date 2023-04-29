@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
 
+
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
