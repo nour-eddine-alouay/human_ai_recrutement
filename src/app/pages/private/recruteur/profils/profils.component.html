@@ -1,0 +1,198 @@
+<app-navbar-recruteur></app-navbar-recruteur>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mqb-lg-0 h-100">
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100 nav-active" routerLink="/recruteur/profils">Profils</a></li>
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/recruteur/actualites">Actualités</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="px-5 py-3 bg-light page-container">
+  <h3 class="title px-5 mb-4">Liste de profils</h3>
+  <div class="px-5 mb-4 d-flex justify-content-between">
+    <div class="col-2 select">
+      <ul class="p-0">
+        <div
+          class="selectbox d-flex justify-content-between"
+          (click)="sCompetence = !sCompetence"
+        >
+          <li>{{ competence }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="sCompetence" class="drop">
+          <li class="option" (click)="selectCompetence('144')">144</li>
+          <li class="option" (click)="selectCompetence('360')">360</li>
+        </div>
+      </ul>
+    </div>
+    <div class="col-2 select">
+      <ul class="p-0">
+        <div
+          class="selectbox d-flex justify-content-between"
+          (click)="sContrat = !sContrat"
+        >
+          <li>{{ contrat }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="sContrat" class="drop">
+          <li class="option" (click)="selectContrat('144')">144</li>
+          <li class="option" (click)="selectContrat('360')">360</li>
+        </div>
+      </ul>
+    </div>
+    <div class="col-2 select">
+      <ul class="p-0">
+        <div
+          class="selectbox d-flex justify-content-between"
+          (click)="sVille = !sVille"
+        >
+          <li>{{ ville }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="sVille" class="drop">
+          <li class="option" (click)="selectVille('144')">144</li>
+          <li class="option" (click)="selectVille('360')">360</li>
+        </div>
+      </ul>
+    </div>
+    <div class="col-3 mot-cle">
+      <input type="text" placeholder="Mot clé" class="w-100" />
+    </div>
+    <div class="col-2">
+      <button
+        class="btn search-btn w-100"
+        style="height: 36px; border-radius: 0"
+      >
+        Rechercher
+      </button>
+    </div>
+  </div>
+  <div class="px-5">
+    <div class="card-group justify-content-center">
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              routerLink="/recruteur/candidat-details"
+              src="../../../assets/images/profil-1.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p routerLink="/recruteur/candidat-details" class="profil-name">NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              src="../../../assets/images/profil-2.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p>NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              src="../../../assets/images/profil-3.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p>NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              src="../../../assets/images/profil-4.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p>NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              src="../../../assets/images/profil-3.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p>NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              src="../../../assets/images/profil-1.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p>NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              src="../../../assets/images/profil-2.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p>NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-2 m-2">
+        <div class="p-2 mb-5 mb-xl-0">
+          <div class="d-flex justify-content-center">
+            <img
+              src="../../../assets/images/profil-5.jpg"
+              alt=""
+              class="profil mb-3"
+            />
+          </div>
+          <div class="text-center">
+            <p>NOM Prenom</p>
+            <p class="fw-bold">Spécialiste en gestion de patrimoine</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

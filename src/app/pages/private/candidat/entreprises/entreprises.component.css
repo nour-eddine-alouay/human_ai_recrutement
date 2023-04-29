@@ -1,0 +1,132 @@
+#nav2 {
+  background-color: var(--laser);
+  height: 48px;
+}
+.nav-link {
+  color: black !important;
+}
+.navs:hover {
+  border-bottom: solid 2px black;
+}
+.padd {
+  padding-bottom: 110px !important;
+}
+.nav-item:hover{
+  background-color: var(--laser);
+}
+.nav-active{
+  border-bottom: solid 2px black;
+}
+
+.page-container {
+  padding-bottom: 150px !important;
+}
+
+.filter-btn{
+  padding: 5px 10px;
+  font-size: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.title {
+  color: var(--river-bed);
+  font-size: 25px;
+}
+
+ul {
+  list-style: none;
+}
+/* .filter{
+    background-color: #eaeaf1;
+  } */
+.select ul {
+  background-color: white !important;
+  position: relative;
+  list-style: none;
+}
+.select ul li.option:not([disabled]):hover {
+  background-color: var(--violent-violet);
+  color: white;
+}
+.select ul li.option {
+  z-index: 1;
+  padding: 5px;
+}
+.selectbox {
+  padding: 4px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  height: 36px !important;
+}
+.drop {
+  background-color: #e1e1e9;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.search-btn {
+  text-decoration: none;
+  text-align: center;
+  background-color: var(--kimberly);
+  color: white;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.search-btn:active:hover {
+  background-color: var(--violent-violet) !important;
+  color: white !important;
+}
+.mot-cle input {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: 36px !important;
+  padding: 10px;
+  outline: 0;
+}
+.nom-entreprise{
+  cursor: pointer;
+}
+
+.logo {
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  border: solid 1px rgb(185, 185, 185);
+  padding: 3px;
+}
+.card {
+  border: none;
+  -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+}
+.card-group .entreprise {
+  padding: 10px;
+}
+
+.offres {
+  color: var(--violent-violet);
+}
+
+
+/*************pagination***********/
+.pagination {
+  margin-top: 0px;
+}
+
+.pagination > li > button, .pagination > li > span {
+  background-color: rgb(190, 190, 190);
+  padding: 3px 9px;
+  color: #fff;
+  border: 0px;
+}
+
+.pagination > li > button {
+  margin-right: 5px;
+}
+
+.pagination > .active > button, .pagination > .active > span, .pagination > .active > button:hover, .pagination > .active > span:hover, .pagination > .active > button:focus, .pagination > .active > span:focus {
+  box-shadow: none;
+  background-color: #7876A5;
+}

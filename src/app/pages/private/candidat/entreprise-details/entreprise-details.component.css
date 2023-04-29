@@ -1,0 +1,370 @@
+.page-container {
+  padding-bottom: 150px;
+}
+.job-box {
+  -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  padding: 10px 35px;
+}
+.suggest-box {
+  -webkit-box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+}
+.suggest-title {
+  margin-left: 10px;
+  margin-bottom: 12px;
+  color: var(--thunder);
+}
+.job-box .img-holder {
+  height: 65px;
+  width: 65px;
+}
+.job-box .img-holder img{
+  width: 100%;
+  border-radius: 50% !important;
+}
+.postule {
+  border-radius: 0px;
+  background-color: var(--kimberly);
+  color: #fff;
+}
+
+.postule:hover {
+  background-color: var(--persian-indigo);
+  color: #fff;
+}
+.bi-bookmarks-fill,
+.bi-share-fill {
+  color: var(--violent-violet);
+}
+
+.offre-nav {
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+
+.job-overview .job-detail ul {
+  margin-bottom: 28px;
+}
+
+.job-overview .job-detail ul li {
+  opacity: 0.75;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.job-overview .job-detail ul li i {
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+
+.job-overview .overview-bottom,
+.job-overview .overview-top {
+  padding: 35px;
+}
+
+.job-content ul li {
+  font-weight: 600;
+  opacity: 0.75;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+}
+
+@media (min-width: 768px) {
+  .job-content ul li {
+    border-bottom: 0;
+    padding: 0;
+  }
+}
+.job-content ul{
+    list-style: none;
+}
+.job-content ul li i {
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
+.entreprise {
+  width: 100px;
+  border: solid 1px var(--kimberly);
+  /* flex-grow: 1; */
+}
+.entreprise img {
+  width: 100%;
+  height: 100%;
+}
+.petit-job-box{
+    color: rgb(70, 64, 64) !important;
+  border-bottom: 1px solid #ccc;
+}
+.petit-job-box .img-holder {
+  height: 45px;
+  width: 45px;
+  background-color: #4e63d7;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(rgba(78, 99, 215, 0.9)),
+    to(#5a85dd)
+  );
+  background-image: linear-gradient(
+    to right,
+    rgba(78, 99, 215, 0.9) 0%,
+    #5a85dd 100%
+  );
+  font-family: "Open Sans", sans-serif;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 65px;
+  margin-right: 10px !important;
+}
+.petit-job-box .job-content ul li {
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.75;
+  padding-right: 8px;
+}
+
+.petit-job-box .job-content ul li i {
+  font-size: 15px;
+  position: relative;
+  top: 1px;
+}
+#nav2{
+  background-color: var(--laser);
+  height: 48px;
+}
+.nav-link{
+  color: black !important;
+}
+.nav-item:hover{
+  background-color: var(--laser);
+}
+.navs:hover{
+  border-bottom: solid 2px black;
+}
+.nav-active{
+  border-bottom: solid 2px black;
+}
+.padd{
+  padding-bottom: 110px !important;
+}
+
+.text-right{
+text-align:right;
+}
+
+
+.entreprise-card {
+  background-color: white;
+  /* border-radius: 10px; */
+  box-shadow: 0 0 35px 0 rgba(130, 130, 130, 0.2);
+  padding: 20px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.entreprise-card .logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.entreprise-card .logo img {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-right: 10px;
+  border-radius: 50% !important;
+}
+
+.entreprise-card .nom {
+  cursor: pointer;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.entreprise-card .evaluation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.entreprise-card .evaluation .etoiles {
+  display: flex;
+  align-items: center;
+}
+
+.entreprise-card .evaluation .etoiles .fa-star {
+  color: #F1C40F;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.entreprise-card .evaluation .etoiles .fa-star.active {
+  color: #FFD700;
+}
+
+.entreprise-card .evaluation .boutons {
+  display: flex;
+  align-items: center;
+}
+
+.entreprise-card .evaluation .boutons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #3498DB;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.entreprise-card .evaluation .boutons button:hover {
+  transform: scale(1.1);
+}
+
+.entreprise-card .evaluation .boutons .suivre {
+  font-size: 13px;
+  color: #27AE60;
+}
+.entreprise-card .evaluation .boutons .commenter {
+  font-size: 13px;
+}
+
+.entreprise-card .evaluation .boutons .suivre.active {
+  color: #C0392B;
+}
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popup__inner {
+  background-color: white;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup__textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.popup__button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #3498DB;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.popup__button:hover {
+  transform: scale(1.1);
+}
+
+#video-section {
+  background-color: #f9f9f9;
+  padding: 60px 0;
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* pour un rapport d'aspect 16:9 */
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+.comments-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+#comments-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.comment-user {
+  font-weight: bold;
+}
+
+.comment-rating {
+  margin-top: 5px;
+}
+
+.comment-rating i {
+  color: gold;
+}
+
+.border-radius{
+  border-radius: 3px;
+}
+
+.offres-image{
+  width: 50px;
+  height: 50px;
+}

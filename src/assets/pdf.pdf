@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="ProgId" content="Excel.Sheet"/>
+<meta name="Generator" content="Aspose.Cell 23.3.3"/>
+<link rel="File-List" href="_files_files/filelist.xml"/>
+<link rel="Edit-Time-Data" href="_files_files/editdata.mso"/>
+<link rel="OLE-Object-Data" href="_files_files/oledata.mso"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Microsoft Office User</o:Author>
+  <o:Created>2023-03-24T07:32:25Z</o:Created>
+  <o:LastSaved>2023-03-24T07:44:34Z</o:LastSaved>
+</o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--table
+ {mso-displayed-decimal-separator:"\.";
+ mso-displayed-thousand-separator:"\,";}
+@page
+ {
+ mso-header-data:"";
+ mso-footer-data:"";
+ margin:0.75in 0.7in 0.75in 0.7in;
+ mso-header-margin:0.3in;
+ mso-footer-margin:0.3in;
+ mso-page-orientation:Portrait;
+ }
+tr
+ {mso-height-source:auto;
+ mso-ruby-visibility:none;}
+col
+ {mso-width-source:auto;
+ mso-ruby-visibility:none;}
+br
+ {mso-data-placement:same-cell;}
+ruby
+ {ruby-align:left;}
+.style0
+ {
+ mso-number-format:General;
+ text-align:general;
+ vertical-align:bottom;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ color:#000000;
+ font-size:12pt;
+ font-weight:400;
+ font-style:normal;
+ font-family:Calibri,sans-serif;
+ mso-protection:locked visible;
+ mso-style-name:Normal;
+ mso-style-id:0;}
+td
+ {mso-style-parent:style0;
+ mso-number-format:General;
+ text-align:general;
+ vertical-align:bottom;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ color:#000000;
+ font-size:12pt;
+ font-weight:400;
+ font-style:normal;
+ font-family:Calibri,sans-serif;
+ mso-protection:locked visible;
+ mso-ignore:padding;}
+.x15
+ {
+ mso-number-format:General;
+ text-align:general;
+ vertical-align:bottom;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ color:#000000;
+ font-size:12pt;
+ font-weight:400;
+ font-style:normal;
+ font-family:Calibri,sans-serif;
+ mso-protection:locked visible;
+ }
+.x21
+ {
+ mso-number-format:General;
+ text-align:center;
+ vertical-align:middle;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ color:#000000;
+ font-size:12pt;
+ font-weight:400;
+ font-style:normal;
+ font-family:Calibri,sans-serif;
+ mso-protection:locked visible;
+ }
+.x22
+ {
+ mso-number-format:General;
+ text-align:general;
+ vertical-align:middle;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ color:#000000;
+ font-size:16pt;
+ font-weight:700;
+ font-style:normal;
+ font-family:Calibri,sans-serif;
+ mso-protection:locked visible;
+ }
+.x23
+ {
+ mso-number-format:General;
+ text-align:general;
+ vertical-align:middle;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ font-size:16pt;
+ font-weight:400;
+ font-style:normal;
+ font-family:'Helvetica Neue',sans-serif;
+ mso-protection:locked visible;
+ }
+.x24
+ {
+ mso-number-format:General;
+ text-align:general;
+ vertical-align:middle;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ color:#000000;
+ font-size:12pt;
+ font-weight:400;
+ font-style:normal;
+ font-family:Calibri,sans-serif;
+ mso-protection:locked visible;
+ }
+.x25
+ {
+ mso-number-format:General;
+ text-align:center;
+ vertical-align:bottom;
+ white-space:nowrap;
+ background:auto;
+ mso-pattern:auto;
+ color:#000000;
+ font-size:72pt;
+ font-weight:700;
+ font-style:normal;
+ font-family:Calibri,sans-serif;
+ mso-protection:locked visible;
+ }
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>Feuil1</x:Name>
+<x:WorksheetOptions>
+ <x:StandardWidth>2880</x:StandardWidth>
+ <x:Print>
+  <x:ValidPrinterInfo/>
+  <x:PaperSizeIndex>1</x:PaperSizeIndex>
+  <x:HorizontalResolution>600</x:HorizontalResolution>
+  <x:VerticalResolution>600</x:VerticalResolution>
+ </x:Print>
+ <x:Selected/>
+ <x:TopRowVisible>30</x:TopRowVisible>
+</x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+  <x:WindowHeight>16480</x:WindowHeight>
+  <x:WindowWidth>28040</x:WindowWidth>
+  <x:WindowTopX>1340</x:WindowTopX>
+  <x:WindowTopY>500</x:WindowTopY>
+  <x:RefModeR1C1/>
+  <x:TabRatio>600</x:TabRatio>
+  <x:ActiveSheet>0</x:ActiveSheet>
+ </x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body link='blue' vlink='purple' >
+
+<table border='0' cellpadding='0' cellspacing='0' width='1919' style='border-collapse: 
+ collapse;table-layout:fixed;width:1439pt'>
+ <col width='90' style='width:67.5pt'/>
+ <col width='477' style='mso-width-source:userset;width:357.75pt'/>
+ <col width='812' style='mso-width-source:userset;width:609pt'/>
+ <col width='90' span='6' style='width:67.5pt'/>
+ <tr height='122' style='mso-height-source:userset;height:92pt'>
+<td colspan='3' height='122' class='x25' width='1379' style='height:92pt;'>Les valeurs d'une entreprise</td>
+<td colspan='6' width='540' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='21' style='mso-height-source:userset;height:16pt'>
+<td colspan='9' height='21' style='mso-ignore:colspan;height:16pt;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>1</td>
+<td class='x22'>L'intégrité</td>
+<td class='x23'>Le respect de l'éthique professionnelle et la prise de décisions éthiques.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>2</td>
+<td class='x22'>L'innovation</td>
+<td colspan='5' class='x23' style='mso-ignore:colspan;'>La recherche de nouvelles idées et la créativité pour améliorer la qualité des produits ou des services de l'entreprise.</td>
+<td colspan='2' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>3</td>
+<td class='x22'>La responsabilité sociale</td>
+<td colspan='6' class='x23' style='mso-ignore:colspan;'>La prise en compte des impacts sociaux et environnementaux de l'activité de l'entreprise et la mise en place de pratiques durables.</td>
+<td></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>4</td>
+<td class='x22'>L'excellence</td>
+<td class='x23'>La poursuite de la qualité et de la perfection dans toutes les activités de l'entreprise.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>5</td>
+<td class='x22'>La collaboration, Le travail d'équipe</td>
+<td colspan='5' class='x23' style='mso-ignore:colspan;'>La collaboration et la communication efficace entre les membres de l'équipe pour atteindre les objectifs de l'entreprise.</td>
+<td colspan='2' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>6</td>
+<td class='x22'>L'engagement envers le client</td>
+<td colspan='3' class='x23' style='mso-ignore:colspan;'>La satisfaction du client comme priorité et la création d'une relation de confiance avec les clients.</td>
+<td colspan='4' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>7</td>
+<td class='x22'>La diversité et l'inclusion</td>
+<td colspan='5' class='x23' style='mso-ignore:colspan;'>La promotion d'un environnement de travail inclusif et diversifié où toutes les personnes sont traitées avec respect.</td>
+<td colspan='2' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>8</td>
+<td class='x22'>La transparence</td>
+<td colspan='7' class='x23' style='mso-ignore:colspan;'>La communication ouverte et honnête avec les parties prenantes de l'entreprise, y compris les employés, les clients et les actionnaires.</td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>9</td>
+<td class='x22'>La sécurité</td>
+<td colspan='4' class='x23' style='mso-ignore:colspan;'>La priorité donnée à la sécurité des employés, des clients et de tous ceux qui interagissent avec l'entreprise.</td>
+<td colspan='3' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>10</td>
+<td class='x22'>La croissance</td>
+<td colspan='7' class='x23' style='mso-ignore:colspan;'>La recherche d'une croissance durable de l'entreprise qui bénéficie à toutes les parties prenantes et assure une pérennité à long terme.</td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>11</td>
+<td class='x22'>La flexibilité</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>L'adaptabilité aux changements et aux défis, et la capacité à trouver des solutions créatives.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>12</td>
+<td class='x22'>La confiance</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La confiance envers les membres de l'équipe, les clients et les partenaires commerciaux.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>13</td>
+<td class='x22'>L'apprentissage continu</td>
+<td colspan='4' class='x23' style='mso-ignore:colspan;'>La volonté d'apprendre et d'améliorer les compétences, les connaissances et les pratiques professionnelles.</td>
+<td colspan='3' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>14</td>
+<td class='x22'>L'empathie</td>
+<td class='x23'>La capacité à comprendre les perspectives et les besoins des autres.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>15</td>
+<td class='x22'>L'efficacité</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La recherche de l'efficacité dans toutes les activités de l'entreprise pour optimiser les résultats.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>16</td>
+<td class='x22'>L'orientation client</td>
+<td class='x23'>La priorité donnée aux besoins et aux attentes des clients.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>17</td>
+<td class='x22'>La qualité de vie au travail</td>
+<td class='x23'>La création d'un environnement de travail sain et équilibré pour les employés.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>18</td>
+<td class='x22'>L'ouverture d'esprit</td>
+<td class='x23'>La capacité à considérer différentes perspectives et à embrasser la diversité.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>19</td>
+<td class='x22'>La créativité</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La recherche de nouvelles idées et la capacité à innover dans les activités de l'entreprise.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>20</td>
+<td class='x22'>La durabilité</td>
+<td colspan='7' class='x23' style='mso-ignore:colspan;'>La mise en place de pratiques durables pour minimiser l'impact environnemental de l'entreprise et promouvoir la durabilité à long terme.</td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>21</td>
+<td class='x22'>La communication</td>
+<td colspan='3' class='x23' style='mso-ignore:colspan;'>La promotion d'une communication claire et ouverte entre les membres de l'équipe et avec les clients.</td>
+<td colspan='4' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>22</td>
+<td class='x22'>La confiance en soi</td>
+<td class='x23'>La confiance en ses propres compétences et en la capacité de l'entreprise à réussir.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>23</td>
+<td class='x22'>L'engagement envers l'excellence du service client</td>
+<td class='x23'>La priorité donnée à la satisfaction des clients en offrant un excellent service client.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>24</td>
+<td class='x22'>La flexibilité de l'horaire</td>
+<td colspan='6' class='x23' style='mso-ignore:colspan;'>La capacité à offrir des horaires de travail flexibles pour les employés afin de répondre à leurs besoins personnels et professionnels.</td>
+<td></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>25</td>
+<td class='x22'>La culture de l'apprentissage</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La promotion de la formation continue et du développement des compétences des employés.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>26</td>
+<td class='x22'>L'humilité</td>
+<td class='x23'>La capacité à reconnaître ses erreurs et à travailler pour les corriger.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>27</td>
+<td class='x22'>La volonté de prendre des risques</td>
+<td class='x23'>La capacité à prendre des risques calculés pour atteindre les objectifs de l'entreprise.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>28</td>
+<td class='x22'>La réactivité</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La capacité à répondre rapidement aux besoins des clients et à résoudre les problèmes.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>29</td>
+<td class='x22'>La passion</td>
+<td class='x23'>L'engagement envers la mission de l'entreprise et la passion pour ce qu'elle fait.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>30</td>
+<td class='x22'>La loyauté</td>
+<td class='x23'>La fidélité envers l'entreprise, les membres de l'équipe et les clients.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>31</td>
+<td class='x22'>La responsabilité personnelle</td>
+<td class='x23'>La prise de responsabilité individuelle pour les actions et les résultats.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>32</td>
+<td class='x22'>La résilience</td>
+<td class='x23'>La capacité à surmonter les obstacles et les défis.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>33</td>
+<td class='x22'>La gestion du temps</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La capacité à gérer efficacement son temps pour atteindre les objectifs de l'entreprise.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>34</td>
+<td class='x22'>L'authenticité</td>
+<td colspan='3' class='x23' style='mso-ignore:colspan;'>La promotion d'une culture d'entreprise authentique qui reflète les valeurs et la mission de l'entreprise.</td>
+<td colspan='4' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>35</td>
+<td class='x22'>La reconnaissance</td>
+<td class='x23'>La reconnaissance des réalisations et des contributions des membres de l'équipe.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>36</td>
+<td class='x22'>La diversité des talents</td>
+<td class='x23'>La promotion de la diversité des talents et des compétences au sein de l'entreprise.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>37</td>
+<td class='x22'>La collaboration</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La capacité à travailler en collaboration avec d'autres équipes et partenaires commerciaux.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>38</td>
+<td class='x22'>La sécurité financière</td>
+<td colspan='4' class='x23' style='mso-ignore:colspan;'>La gestion financière responsable et la sécurité financière pour les employés, les clients et les actionnaires.</td>
+<td colspan='3' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>39</td>
+<td class='x22'>La croissance personnelle</td>
+<td class='x23'>La promotion de la croissance personnelle et professionnelle des employés.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>40</td>
+<td class='x22'>La qualité</td>
+<td colspan='5' class='x23' style='mso-ignore:colspan;'>La recherche de la qualité dans toutes les activités de l'entreprise, du produit ou du service jusqu'à l'expérience client.</td>
+<td colspan='2' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>41</td>
+<td class='x22'>L'innovation</td>
+<td colspan='4' class='x23' style='mso-ignore:colspan;'>La capacité à créer des solutions innovantes pour résoudre les problèmes et à anticiper les tendances futures.</td>
+<td colspan='3' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>42</td>
+<td class='x22'>La transparence</td>
+<td colspan='5' class='x23' style='mso-ignore:colspan;'>La promotion d'une communication ouverte et transparente avec les employés, les clients et les partenaires commerciaux.</td>
+<td colspan='2' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>43</td>
+<td class='x22'>La responsabilité sociale</td>
+<td colspan='5' class='x23' style='mso-ignore:colspan;'>La prise en compte de l'impact de l'entreprise sur la société et l'environnement et la promotion d'une responsabilité sociale.</td>
+<td colspan='2' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>44</td>
+<td class='x22'>L'agilité</td>
+<td colspan='3' class='x23' style='mso-ignore:colspan;'>La capacité à s'adapter rapidement aux changements du marché et de l'environnement commercial.</td>
+<td colspan='4' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>45</td>
+<td class='x22'>La créativité</td>
+<td colspan='3' class='x23' style='mso-ignore:colspan;'>La promotion d'une culture de la créativité pour générer de nouvelles idées et des solutions innovantes.</td>
+<td colspan='4' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>46</td>
+<td class='x22'>La durée de vie du produit</td>
+<td colspan='6' class='x23' style='mso-ignore:colspan;'>La promotion de la durée de vie des produits et de l'utilisation de matériaux durables pour minimiser l'impact environnemental.</td>
+<td></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>47</td>
+<td class='x22'>L'orientation résultats</td>
+<td class='x23'>La priorité donnée aux résultats et à l'atteinte des objectifs de l'entreprise.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>48</td>
+<td class='x22'>La confidentialité</td>
+<td class='x23'>La protection des données confidentielles des clients et des employés.</td>
+<td colspan='6' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>49</td>
+<td class='x22'>La responsabilité environnementale</td>
+<td colspan='3' class='x23' style='mso-ignore:colspan;'>La prise en compte de l'impact de l'entreprise sur l'environnement et la promotion de pratiques durables.</td>
+<td colspan='4' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+ <tr height='28' style='mso-height-source:userset;height:21pt'>
+<td height='28' class='x21' style='height:21pt;'>50</td>
+<td class='x22'>La résolution de problèmes</td>
+<td colspan='2' class='x23' style='mso-ignore:colspan;'>La capacité à résoudre rapidement les problèmes et les défis rencontrés par l'entreprise.</td>
+<td colspan='5' class='x24' style='mso-ignore:colspan;'></td>
+ </tr>
+<![if supportMisalignedColumns]>
+ <tr height='0' style='display:none'>
+  <td width='90' style='width:67.5pt;'></td>
+  <td width='477' style='width:357.75pt;'></td>
+  <td width='812' style='width:609pt;'></td>
+  <td width='540' colspan='6' style='width:405pt;mso-ignore:colspan;'></td>
+ </tr>
+ <![endif]>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,357 @@
+<app-navbar-candidat></app-navbar-candidat>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100 nav-active" routerLink="/candidat/home"
+            >Offres d’emploi</a
+          >
+        </li>
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/candidat/entreprises"
+            >Entreprises</a
+          >
+        </li>
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/candidat/actualites"
+            >Actualités</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="p-5 bg-light page-container">
+  <div [class.mb-5]="!showFilter" class="px-5 mb-3 d-flex justify-content-between">
+    <!-- toggle filters -->
+    <div>
+      <button class="btn filter-btn" (click)="toggleFilters()"><i class="bi bi-sliders"></i></button>
+    </div>
+    <!-- domaine -->
+    <div *ngIf="showFilter" class="col-2 select">
+      <ul class="p-0">
+        <div class="selectbox d-flex justify-content-between" (click)="isDomaine = !isDomaine">
+          <li class="text-truncate">{{ domaine }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="isDomaine" class="drop scrollable overflow-auto" style="height: 300px;">
+          <li class="option" (click)="selectDomaine('Tout')">Tout</li>
+          <li *ngFor="let domaine of domaines" class="option" (click)="selectDomaine(domaine.name)">
+            {{domaine.name}}
+          </li>
+        </div>
+      </ul>
+    </div>
+    <!-- search -->
+    <div class="col-6 mot-cle">
+      <input
+        type="text"
+        placeholder="Mot clé (titre, compétances...)"
+        class="w-100"
+        [(ngModel)]="kaywords"
+        (input)="filterOffers(1)"
+      />
+    </div>
+    <!-- Rechercher -->
+    <div class="col-2">
+      <button
+        class="btn search-btn w-100 postule"
+        style="height: 36px"
+        (click)="filterOffers(1)"
+      >
+        Rechercher
+        <i class="fa fa-search ms-3" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="showFilter" class="px-5 mb-5 d-flex justify-content-between">
+    <!-- pays -->
+    <div class="col-2 select">
+      <ul class="p-0">
+        <div class="selectbox d-flex justify-content-between" (click)="isPays = !isPays">
+          <li class="text-truncate">{{ pays }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="isPays" class="drop scrollable overflow-auto" style="height: 300px;">
+          <li class="option" (click)="selectPays('Tout')">Tout</li>
+          <li *ngFor="let pays of paysList" class="option" (click)="selectPays(pays.name)">
+            {{pays.name}}
+          </li>
+        </div>
+      </ul>
+    </div>
+    <!-- contrat -->
+    <div class="col-2 select">
+      <ul class="p-0">
+        <div
+          class="selectbox d-flex justify-content-between"
+          (click)="isContrat = !isContrat"
+        >
+          <li class="text-truncate">{{ contrat }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="isContrat" class="drop scrollable overflow-auto" style="height: 300px;">
+          <li class="option" (click)="selectContrat('Tout')">Tout</li>
+          <li class="option" (click)="selectContrat('CDI')">CDI</li>
+          <li class="option" (click)="selectContrat('CDD')">CDD</li>
+          <li class="option" (click)="selectContrat('Intérim')">Intérim</li>
+          <li class="option" (click)="selectContrat('Franchises')">Franchises</li>
+          <li class="option" (click)="selectContrat('Contractuel')">Contractuel</li>
+          <li class="option" (click)="selectContrat('Statutaire')">Statutaire</li>
+          <li class="option" (click)="selectContrat('Avis de concours')">Avis de concours</li>
+          <li class="option" (click)="selectContrat('Indépendant / Freelance')">Indépendant / Freelance</li>
+          <li class="option" (click)="selectContrat('Alternance')">Alternance</li>
+        </div>
+      </ul>
+    </div>
+    <!-- mode de travail -->
+    <div class="col-2 select">
+      <ul class="p-0">
+        <div
+          class="selectbox d-flex justify-content-between"
+          (click)="isModeTravail = !isModeTravail"
+        >
+          <li class="text-truncate">{{ modeTravail }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="isModeTravail" class="drop">
+          <li class="option" (click)="selectModeTravail('Tout')">Tout</li>
+          <li class="option" (click)="selectModeTravail('Télétravail')">Télétravail</li>
+          <li class="option" (click)="selectModeTravail('Home office')">Home office</li>
+        </div>
+      </ul>
+    </div>
+    <!-- salaire min -->
+    <div class="col-2 mot-cle">
+      <input [(ngModel)]="min_salaire" type="number" placeholder="salaire minimal" class="w-100" min="0"/>
+    </div>
+    <!-- salaire max -->
+    <div class="col-2 mot-cle">
+      <input [(ngModel)]="max_salaire" type="number" placeholder="salaire maximal" class="w-100" min="0"/>
+    </div>
+    <!-- Appliquer -->
+    <div class="col-1">
+      <button
+        (click)="filterOffers(1)"
+        class="btn search-btn w-100 postule"
+        style="height: 36px">
+        Appliquer
+      </button>
+    </div>
+  </div>
+  <div class="px-5 d-flex">
+    <!-- Sidebar 1 : Offres -->
+    <div class="filter-result col-8">
+      <div class="job-box mb-30" *ngFor="let offre of filteredItems">
+        <div class="job-left my-2 d-md-flex align-items-center flex-wrap">
+          <a (click)="voirDetails(offre?.id)" style="text-decoration: none;cursor:pointer;">
+            <div class="img-holder rounded me-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+              <img src="{{offre?.image_url?offre?.image_url:'../../../assets/images/default_profil/default_entreprise.png'}}">
+            </div>
+          </a>
+          <div class="job-content">
+            <a (click)="voirDetails(offre?.id)" style="text-decoration: none;cursor:pointer;">
+              <h5 class="text-md-left">{{offre?.titre}}</h5>
+            </a>
+            <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+              <li class="me-md-4">
+                <span class="flag-icon flag-icon-{{offre?.pays.toLowerCase()}}"></span>
+              </li>
+              <li class="me-md-4">
+                <i class="bi bi-geo-alt-fill"></i> {{ firstNWordOfString(offre?.adresse,2) }}
+              </li>
+              <li *ngIf="!offre?.hide_salaire" class="me-md-4">
+                <i class="bi bi-cash"></i> {{offre?.min_salaire}}-{{offre?.max_salaire}} $
+              </li>
+              <li class="me-md-4" *ngIf="offre?.hide_salaire">
+                <i class="bi bi-cash-stack me-2"></i> À discuter
+              </li>
+              <li class="me-md-4"><i class="bi bi-clock"></i> {{offre?.mode_travail}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="d-flex justify-content-evenly">
+          <div *ngIf="offre?.status=='active'" class="job-right my-2 flex-shrink-0 col-md-6 col-8">
+            <button
+            (click)="initPostule(offre?.id,offre?.titre)"
+            class="btn d-block d-sm-inline-block postule"
+            data-bs-toggle="modal"
+            data-bs-target="#postuler">
+              Postuler maintenant
+              <i class="fa fa-send ms-2"></i>
+            </button>
+          </div>
+          <div *ngIf="offre?.status=='en sélection'" class="job-right my-2 flex-shrink-0 col-md-6 col-8">
+            <button
+            disabled
+            class="btn d-block d-sm-inline-block postule"
+            data-bs-toggle="modal"
+            data-bs-target="#postuler">
+              Offre en selection
+              <i class="fa fa-hourglass ms-2"></i>
+            </button>
+          </div>
+          <div class="d-flex justify-content-end">
+            <a class="btn offre-nav me-2" (click)="openDialog()"><i class="bi bi-share-fill"></i></a>
+            <a class="btn offre-nav" (click)="toggleOffreEnregistrement(offre?.id)"><i class="bi" [ngClass]="offre?.isSaved==1? 'bi-bookmarks-fill' : 'bi-bookmarks'"></i></a>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="filteredItems" class="d-flex justify-content-center">
+        <ul class="pagination mt-1 mb-0">
+          <li [class.disabled]="" class="page-item"><button (click)="changePage(currentPage-1)" [disabled]="currentPage==1" class="page-link" type="button">‹</button></li>
+          <li *ngFor="let page of pageNumbers" [class.active]="currentPage==page" class="active page-item">
+            <button (click)="changePage(page)" class="page-link" type="button">{{page}}</button>
+          </li>
+          <li [class.disabled]="" class="page-item"><button (click)="changePage(currentPage+1)" [disabled]="currentPage==totalPages" class="page-link" type="button">›</button></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Sidebar 2 : others -->
+    <div class="col-4 ms-4">
+      <div class="suggest-title">
+      </div>
+      <div class="suggest-box p-2 mb-4 d-flex justify-content-evenly flex-wrap">
+        <div class="container">
+          <div class="mt-2">
+            <div class="col-lg-12 col-xl-12">
+                <div class="card bg-c-green order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Offres Disponibles</h6>
+                        <h2 class="text-right d-flex justify-content-between"><i class="fa fa-rocket f-left"></i><span>{{countActiveOffres}}</span></h2>
+                        <p class="m-b-0">Total candidatures<span class="f-right">{{countPostulesOfActiveOffres}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-xl-12">
+                <div class="card bg-c-yellow order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Offres En Selection</h6>
+                        <h2 class="text-right d-flex justify-content-between"><i class="fa fa-hourglass f-left"></i><span>{{countEnSelectionOffres}}</span></h2>
+                        <p class="m-b-0">Total candidatures<span class="f-right">{{countPostulesOfEnSelectionOffres}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-xl-12">
+              <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                  <h6 class="m-b-20">Enreprises</h6>
+                  <h2 class="text-right d-flex justify-content-between"><i class="fa fa-building f-left"></i><span>{{countEntreprises}}</span></h2>
+                  <p class="m-b-0">
+                    Au pays
+                    {{candidat_pays}}
+                    <span class="f-right">{{countCandidatCountryEntreprises}}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-xl-12">
+                <div class="card bg-c-blue order-card">
+                    <div class="card-block">
+                        <h6 class="m-b-20">Candidat</h6>
+                        <h2 class="text-right d-flex justify-content-between"><i class="fa fa-user-circle f-left"></i><span>{{countCandidats}}</span></h2>
+                        <p class="m-b-0">
+                          Au pays
+                          {{candidat_pays}}
+                          <span class="f-right">{{countCandidatAtSameCountry}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="suggest-title">
+        <!-- <h5>Les entreprises qui recrutent</h5> -->
+      </div>
+      <div class="suggest-box p-2 mb-4">
+        <h5 class="fw-bold my-2 text-center">Entreprises</h5>
+        <div class="d-flex justify-content-evenly flex-wrap">
+          <div *ngFor="let entreprise of uniqueOffresEntreprises" class="entreprise p-1 m-1">
+            <img src="{{entreprise?entreprise:'../../../assets/images/default_profil/default_entreprise.png'}}" alt="" />
+          </div>
+          <div *ngIf="uniqueOffresEntreprises?.length==0" class="small text-muted">Pas de résultats...</div>
+        </div>
+        <div class="text-center">
+          <button routerLink="/candidat/entreprises" class="btn btn-sm postule my-3 border-radius">
+            Voir tout
+            <span><i class="fa fa-external-link mx-2"></i></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+
+<!-- -------------------------------------------------------------------- -->
+<!-- Postuler à l'offre modal -->
+<!-- -------------------------------------------------------------------- -->
+<div class="modal fade" id="postuler" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5"> Postuler à l'offre {{titreOffrePostule}}</h1>
+        <button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="postuleForm">
+          <div class="modal-body">
+            <!-- lettre de motivation -->
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="control-label mb-2">Lettre de motivation</label>
+                <textarea
+                id="lettre"
+                class="form-control"
+                formControlName="lettre"
+                placeholder="tapez ici ..."
+                [class.is-invalid]="invalidTouchedDirtyFormControl(postuleForm,'lettre') && lettre.errors?.['required']"
+                rows="8"></textarea>
+                <div class="invalid-feedback">
+                  La lettre de motivation est oblogatoire.
+                </div>
+                <label class="control-label text-muted small mb-2">Redigez une lettre de motivation professionnelle.</label>
+              </div>
+          </div>
+         </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-end">
+        <button type="button" id="closeModal" class="btn btn-light" data-bs-dismiss="modal">
+          Retour
+        </button>
+        <button
+          (click)="addPostule()"
+          [disabled]="postuleForm.invalid"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-success">
+          Postuler
+          <i class="fa fa-send ms-1"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- toast -->
+<div class="toast" style="position: fixed; top: 15px; right: 20px;z-index: 1000;">
+  <div class="toast-header">
+    <span>
+      <i *ngIf="toast_status=='warning'" class="fa fa-warning text-warning fw-bold me-2"></i>
+      <i *ngIf="toast_status=='danger'" class="fa fa-times text-danger fw-bold me-2"></i>
+      <i *ngIf="toast_status=='success'" class="fa fa-check text-success fw-bold me-2"></i>
+    </span>
+    <strong class="me-auto">{{toast_header}}</strong>
+    <small class="text-muted">maintenant</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    {{toast_message}}
+  </div>
+</div>

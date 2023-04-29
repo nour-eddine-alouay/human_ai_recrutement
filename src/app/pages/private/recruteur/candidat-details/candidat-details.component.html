@@ -1,0 +1,424 @@
+<app-navbar-recruteur></app-navbar-recruteur>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mqb-lg-0 h-100">
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/recruteur/profils">Profils</a></li>
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/recruteur/actualites">Actualités</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container px-0 my-3 bg-light shadow rounded bg-body">
+   <div class="row">
+      <div class="col-md-12">
+         <div id="content" class="content content-full-width">
+            <!-- begin profile -->
+            <div class="profile">
+               <div class="profile-header">
+                  <div class="profile-header-cover rounded"></div>
+                  <div class="profile-header-content">
+                     <div class="profile-header-img">
+                        <img src="../../../../../assets/images/profil-3.jpg">
+                     </div>
+                     <div class="profile-header-info">
+                        <h4 class="m-t-10 m-b-5">Nom et Prenom</h4>
+                        <p class="m-b-10">32 ans</p>
+                        <p class="m-b-5">UXUI + Frontend Developer</p>
+                        <button class="btn btn-sm btn-light mb-2">
+                          Contacter
+                          <i class="fa fa-send ms-1" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-sm btn-light mb-2 ms-2">
+                          Organiser un entretien
+                          <i class="fa fa-calendar-check-o ms-1"></i>
+                        </button>
+                     </div>
+                  </div>
+                  <ul class="profile-header-tab nav nav-tabs">
+                    <li [class.active.show]="selectedTab == 1" (click)="selectedTab = 1" class="nav-item">
+                      <button [class.active]="selectedTab == 1" class="nav-link_">
+                        Profil Professionel
+                      </button>
+                    </li>
+                    <li [class.active]="selectedTab == 2" (click)="selectedTab = 2" class="nav-item">
+                      <button [class.active]="selectedTab == 2" class="nav-link_">
+                        Valeurs humaines
+                      </button>
+                    </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="profile-content">
+               <div class="tab-content p-0">
+                  <!--  -->
+                  <!-- tab1 : Profil Professionelles -->
+                  <!--  -->
+                  <div *ngIf="selectedTab === 1">
+                    <div class="card-header text-center mb-3 fw-bold text-uppercase">Données Personnelles</div>
+                    <div class="card-body mb-5">
+                        <div>
+                            <div class="mb-3 fw-bold text-success">Données d'identité</div><hr>
+                            <!-- civilité et état civilité -->
+                            <div class="row gx-3 mb-3">
+                              <!-- civilite -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-user-circle-o mx-2"></i></span>
+                                <span class="text-secondary">Civilité : </span>
+                                <span>Monsieur</span>
+                              </div>
+                              <!-- etat_ivilite -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-users mx-2"></i></span>
+                                <span class="text-secondary">État Civilité : </span>
+                                <span>Marié</span>
+                              </div>
+                            </div>
+
+                            <!-- telephone et date naissance -->
+                            <div class="row gx-3 mb-3">
+                              <!-- date naissance -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-calendar mx-2"></i></span>
+                                <span class="text-secondary">Date de naissance : </span>
+                                <span>JJ/MM/YYYY</span>
+                                <span> (32 ans)</span>
+                              </div>
+                              <!-- telephone -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-phone mx-2"></i></span>
+                                <span class="text-secondary">Telephone : </span>
+                                <span>+2126--------</span>
+                              </div>
+                            </div>
+
+                            <!-- pays et ville -->
+                            <div class="row gx-3 mb-4">
+                              <!-- pays -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-globe mx-2"></i></span>
+                                <span class="text-secondary">Pays : </span>
+                                <span>Maroc</span>
+                              </div>
+                              <!-- ville -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-home mx-2"></i></span>
+                                <span class="text-secondary">Ville : </span>
+                                <span>Oujda</span>
+                              </div>
+                            </div>
+
+                            <div class="mb-3 fw-bold text-success">Réseaux sociaux</div><hr>
+                            <!-- linkedin et skype -->
+                            <div class="row gx-3 mb-4">
+                              <!-- LinkedIn -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-linkedin mx-2"></i></span>
+                                <span class="text-secondary">LinkedIn (URL) : </span>
+                                <span>www.linkedin.com/name</span>
+                              </div>
+                              <!-- skype -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-skype mx-2"></i></span>
+                                <span class="text-secondary">Skype : </span>
+                                <span>www.skype.com/name</span>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-header text-center my-4 fw-bold text-uppercase">Données Professionnelles</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3 fw-bold text-success">Domaine d'activité</div><hr>
+                            <!-- domaine d'activité -->
+                            <div class="row gx-3 mb-3">
+                              <!-- Titre -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-briefcase mx-2"></i></span>
+                                <span class="text-secondary">Titre professionnel : </span>
+                                <span>comptable</span>
+                              </div>
+                              <!-- domaine -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-code-fork mx-2"></i></span>
+                                <span class="text-secondary">Domaine : </span>
+                                <span>Economie</span>
+                              </div>
+                            </div>
+
+                            <div class="mb-3 mt-5 fw-bold text-success">Expériences et études</div><hr>
+                            <!-- experiences et etudes -->
+                            <div class="row gx-3 mb-3">
+                              <!-- etudes -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-graduation-cap mx-2"></i></span>
+                                <span class="text-secondary">Niveau d'études : </span>
+                                <span>Bac + 5</span>
+                              </div>
+                              <!-- experiences -->
+                              <div class="col-md-6">
+                                <span><i class="fa fa-handshake-o mx-2"></i></span>
+                                <span class="text-secondary">Niveau d'expérience : </span>
+                                <span>de 4 à 6 ans</span>
+                              </div>
+                            </div>
+
+                            <div class="mb-3 mt-5 fw-bold text-success">Telecharger le CV</div><hr>
+                            <div class="row gx-3 mb-3">
+                              <div class="col-md-6">
+                                <span><i class="fa fa-file-pdf-o mx-2"></i></span>
+                                <span class="pt-1">Telecharger le CV de candidat format PDF</span>
+                              </div>
+                              <div class="col-md-6 d-flex justify-content-end">
+                                <button class="btn bnt-sm btn-success me-5">
+                                  <span><i class="fa fa-download mx-2"></i></span>
+                                  télécharger
+                                </button>
+                              </div>
+                            </div>
+
+                            <!-- aperçu professionnel -->
+                            <div class="mb-3 mt-5 fw-bold text-success">à propos</div><hr>
+                            <div class="row gx-3 mb-3">
+                              <label class="small form-label" for="apercu">
+                                <span>
+                                  Je suis développeur web depuis plus de 6 ans et développeurs logiciel depuis 5 ans.
+                                  La stack technique des différents projets sur lesquels j'ai travaillé est la suivante ANGULAR, PHP/LARAVEL, JAVA/SPRING BOOT, EXPRESS.JS , IONIC.
+                                  J'utilise aussi les outils de collaboration et de gestion de projet tel que GIT/GITHUB , TRELLO, SLACK, NOTION.
+                                  Les industries dans lesquelles j'ai eu à concevoir des solutions informatiques sont l'hôtellerie, la monétique, les services, le transport, l'agriculture et la vente en ligne.
+                                </span>
+                              </label>
+
+                            </div>
+
+                            <!-- Les Formations -->
+                            <div class="row gx-3 mb-1 mt-1"><hr>
+                              <div class="mb-3 mt-5 fw-bold text-success">Formations</div>
+                            </div>
+                            <div class="profile-content mb-3">
+                                <div class="tab-pane fade active show" id="profile-post">
+                                    <ul class="timeline">
+                                      <li>
+                                          <div class="timeline-time">
+                                            <span class="date"></span>
+                                            <span class="time">2019</span>
+                                          </div>
+                                          <div class="timeline-icon">
+                                            <a href="javascript:;">&nbsp;</a>
+                                          </div>
+                                          <div class="card timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="userimage"><img src="assets/images/formation.jpg" alt=""></span>
+                                                <span class="formation">Nom de Formation</span>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <span class="fw-bold">Diplome : </span> diplome obtenue
+                                                <br>
+                                                <span class="fw-bold">Eatblissement  : </span> etablissement de formation
+                                                <p>
+                                                  Description de formation : Lorem ipsum dolor sit amet. Nunc faucibus turpis quis tincidunt luctus.
+                                                  Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+                                                </p>
+                                            </div>
+                                            <div class="timeline-comment-box px-3 py-3">
+                                              <div class="timeline-likes">
+                                                <div class="stats-right">
+                                                  <span class="stats-text">date/debut</span>
+                                                  <span class="stats-text">date/fin</span>
+                                                </div>
+                                                <div class="stats">
+                                                  <div class="badge bg-danger py-2 px-3 me-2" style="font-size: 12px;">non validé</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <div class="timeline-time">
+                                            <span class="date"></span>
+                                            <span class="time">2022</span>
+                                          </div>
+                                          <div class="timeline-icon">
+                                            <a href="javascript:;">&nbsp;</a>
+                                          </div>
+                                          <div class="card timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="userimage"><img src="assets/images/formation.jpg" alt=""></span>
+                                                <span class="formation">Nom de Formation</span>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <span class="fw-bold">Diplome : </span> diplome obtenue
+                                                <br>
+                                                <span class="fw-bold">Eatblissement  : </span> etablissement de formation
+                                                <p>
+                                                  Description de formation : Lorem ipsum dolor sit amet. Nunc faucibus turpis quis tincidunt luctus.
+                                                  Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+                                                </p>
+                                            </div>
+                                            <div class="timeline-comment-box px-3 py-3">
+                                              <div class="timeline-likes">
+                                                <div class="stats-right">
+                                                  <span class="stats-text">date/debut</span>
+                                                  <span class="stats-text">date/fin</span>
+                                                </div>
+                                                <div class="stats">
+                                                  <div class="badge bg-danger py-2 px-3 me-2" style="font-size: 12px;">non validé</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                      </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Les Experiences -->
+                            <hr>
+                            <div class="row gx-3 mb-1 mt-1">
+                              <div class="mb-3 mt-5 fw-bold text-success">Experiences</div>
+                            </div>
+                            <div class="profile-content mb-3">
+                                <div class="tab-pane fade active show" id="profile-post">
+                                    <ul class="timeline">
+                                      <li>
+                                          <div class="timeline-time">
+                                            <span class="date"></span>
+                                            <span class="time">2019</span>
+                                          </div>
+                                          <div class="timeline-icon">
+                                            <a href="javascript:;">&nbsp;</a>
+                                          </div>
+                                          <div class="card timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="userimage"><img src="assets/images/experience.jpg" alt=""></span>
+                                                <span class="formation">Poste</span>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <span class="fw-bold">Entreprise : </span> entreprise
+                                                <p>
+                                                  Description d'experience : Lorem ipsum dolor sit amet. Nunc faucibus turpis quis tincidunt luctus.
+                                                  Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+                                                </p>
+                                            </div>
+                                            <div class="timeline-comment-box px-3 py-3">
+                                              <div class="timeline-likes">
+                                                <div class="stats-right">
+                                                  <span class="stats-text">date/debut</span>
+                                                  <span class="stats-text">date/fin</span>
+                                                </div>
+                                                <div class="stats">
+                                                  <div class="badge bg-danger py-2 px-3 me-2" style="font-size: 12px;">non validé</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                      </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Les Certification -->
+                            <hr>
+                            <div class="row gx-3 mb-1 mt-1">
+                              <div class="mb-3 mt-5 fw-bold text-success">Certification</div>
+                            </div>
+                            <div class="profile-content mb-3">
+                                <div class="tab-pane fade active show" id="profile-post">
+                                    <ul class="timeline">
+                                      <li>
+                                          <div class="timeline-time">
+                                            <span class="date"></span>
+                                            <span class="time">2023</span>
+                                          </div>
+                                          <div class="timeline-icon">
+                                            <a href="javascript:;">&nbsp;</a>
+                                          </div>
+                                          <div class="card timeline-body">
+                                            <div class="timeline-header">
+                                                <span class="userimage"><img src="assets/images/certification.jpg" alt=""></span>
+                                                <span class="formation">Nom de certification</span>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <span class="fw-bold">Autorité  : </span> autorité de certification
+                                                <br>
+                                                <span class="fw-bold">Numéro de Licence  : </span> numéro de Licence
+                                                <p>
+                                                  Description de certification : Lorem ipsum dolor sit amet. Nunc faucibus turpis quis tincidunt luctus.
+                                                  Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+                                                </p>
+                                            </div>
+                                            <div class="timeline-comment-box px-3 py-3">
+                                              <div class="timeline-likes">
+                                                <div class="stats-right">
+                                                  <span class="stats-text">date/debut</span>
+                                                  <span class="stats-text">date/fin</span>
+                                                </div>
+                                                <div class="stats">
+                                                  <div class="badge bg-danger py-2 px-3 me-2" style="font-size: 12px;">non validé</div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                      </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                  <!--  -->
+                  <!-- tab2 : Valeurs humaine -->
+                  <!--  -->
+                  <div *ngIf="selectedTab === 2">
+                    <div class="card-header text-center mb-3 fw-bold">Mes valeurs humaines</div>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12 px-0">
+                          <div class="card">
+                            <div class="table-responsive">
+                              <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                <tbody>
+                                    <ng-container *ngFor="let val_des of valeurs_descriptions, let index=index">
+                                      <tr *ngIf="index>=minVal && index<maxVal">
+                                          <td class="text-center">
+                                            <i [ngClass]="{'fa-star star': val_des.star, 'fa-star-o star-none': !val_des.star}" class="fa"></i>
+                                          </td>
+                                          <td><span class="mb-0 text-dark">{{val_des.valeur}}</span></td>
+                                          <td>
+                                            <span class="text-muted" *ngIf="!val_des.isExpanded" >{{firstNWordOfString(val_des.description,3)}}...</span>
+                                            <span class="text-muted" *ngIf="val_des.isExpanded">{{val_des.description}}</span>
+                                          </td>
+                                          <td><i class="fa fa-bars text-muted value-details" (click)="val_des.isExpanded = !val_des.isExpanded"></i></td>
+                                      </tr>
+                                    </ng-container>
+                                </tbody>
+                              </table>
+                            </div>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                              <ul class="pagination mt-3 mb-0">
+                                <li [class.disabled]="minVal==0" class="page-item"><button (click)="minVal=minVal-10;maxVal=maxVal-10" class="page-link">‹</button></li>
+                                <li [class.active]="minVal==0&&maxVal==10" class="active page-item"><button (click)="minVal=0;maxVal=10" class="page-link">1</button></li>
+                                <li [class.active]="minVal==10&&maxVal==20" class="page-item"><button (click)="minVal=10;maxVal=20" class="page-link">2</button></li>
+                                <li [class.active]="minVal==20&&maxVal==30" class="page-item"><button (click)="minVal=20;maxVal=30" class="page-link">3</button></li>
+                                <li [class.active]="minVal==30&&maxVal==40" class="page-item"><button (click)="minVal=30;maxVal=40" class="page-link">4</button></li>
+                                <li [class.active]="minVal==40&&maxVal==50" class="page-item"><button (click)="minVal=40;maxVal=50" class="page-link">5</button></li>
+                                <li [class.disabled]="maxVal==50" class="page-item"><button (click)="minVal=minVal+10;maxVal=maxVal+10" class="page-link">›</button></li>
+                              </ul>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+               <!-- end tab-content -->
+            </div>
+            <!-- end profile-content -->
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="m-5" style="height: 50px;">
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,270 @@
+<app-navbar-recruteur></app-navbar-recruteur>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mqb-lg-0 h-100">
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/recruteur/profils"
+            >Profils</a
+          >
+        </li>
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/recruteur/actualites"
+            >Actualités</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"
+  integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css"
+  integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc="
+  crossorigin="anonymous"
+/>
+<div class="container my-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 py-4">
+    <div class="col-md-3">
+      <div class="card radius-10 border-start border-0 border-3 border-info">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div>
+              <p class="mb-0 text-secondary">Total</p>
+              <h4 class="my-1 text-info">{{ total }}</h4>
+              <p class="mb-0 font-13"></p>
+            </div>
+            <div
+              class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"
+            >
+              <i class="fa fa-bar-chart"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card radius-10 border-start border-0 border-3 border-success">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div>
+              <p class="mb-0 text-secondary">Actives</p>
+              <h4 class="my-1 text-success">{{ active }}</h4>
+              <p class="mb-0 font-13"></p>
+            </div>
+            <div
+              class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"
+            >
+              <i class="fa fa-check"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card radius-10 border-start border-0 border-3 border-warning">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div>
+              <p class="mb-0 text-secondary">En Sélection</p>
+              <h4 class="my-1 text-warning">{{ enSelection }}</h4>
+              <p class="mb-0 font-13"></p>
+            </div>
+            <div
+              class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto"
+            >
+              <i class="fa fa-hourglass"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card radius-10 border-start border-0 border-3 border-danger">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <div>
+              <p class="mb-0 text-secondary">Archivées</p>
+              <h4 class="my-1 text-danger">{{ archivee }}</h4>
+              <p class="mb-0 font-13"></p>
+            </div>
+            <div
+              class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"
+            >
+              <i class="fa fa-archive"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container text-center  py-3" style="background-color: #f8f9fa">
+  <div class="row my-4 px-3">
+    <div class="col-md-3">
+      <div class="">
+        <h5 class="text-start">
+          Mes Offres<span class="text-muted fw-normal"></span>
+        </h5>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+          <div class="input-group">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Mot clé (titre d'offre, Localisation...)"
+                [(ngModel)]="searchTerm"
+                (input)="onSearch()"
+              />
+              <button
+                class="btn search-btn"
+                id="button-search"
+                type="button"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-3 d-flex justify-content-end">
+      <button class="btn btn-success" routerLink="/recruteur/offre">
+        <span><i class="fa fa-plus me-2"></i></span>
+        Créer une offre
+      </button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="table-responsive">
+          <!-- classes for table : project-list-table table-hover -->
+          <table class="table table-nowrap align-middle table-borderless mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Titre de l'offre</th>
+                <th scope="col">Contrat</th>
+                <th scope="col">Localisation</th>
+                <th scope="col">État d'offre</th>
+                <th scope="col">Mode de travail</th>
+                <th scope="col" style="width: 200px">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="filteredItems.length === 0">
+                <td colspan="7">Aucune offre disponible</td>
+              </tr>
+              <tr class="table-hover" *ngFor="let offre of filteredItems">
+                <td>
+                  <a class="text-body">{{ firstNWordOfString(offre.titre,2) }}</a>
+                </td>
+                <td>{{ offre.contrat }}</td>
+                <td>{{ firstNWordOfString(offre.adresse,2) }}</td>
+                <td>
+                  <span
+                    [ngClass]="{
+                      'badge-soft-success': offre.status === 'active',
+                      'badge-soft-danger': offre.status === 'archivée',
+                      'badge-soft-warning': offre.status === 'en sélection'
+                    }"
+                    class="badge mb-0"
+                    >{{ offre.status }}
+                  </span>
+                </td>
+                <td>{{ offre.mode_travail }}</td>
+                <td>
+                  <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                      <a
+                        (click)="voirDetails(offre.id)"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        class="px-2"
+                        style="color: var(--violent-violet)"
+                      >
+                        <i class="bi bi-eye"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item" *ngIf="offre.status !== 'active'">
+                      <a
+                        (click)="toActive(offre.id)"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        class="px-2 text-success"
+                      >
+                        <i class="bx bx-check-circle font-size-18"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item" *ngIf="offre.status !== 'en sélection'">
+                     <a
+                       (click)="toSelection(offre.id)"
+                       data-bs-toggle="tooltip"
+                       data-bs-placement="top"
+                       class="px-2 text-warning"
+                     >
+                       <i class="bx bx-hourglass font-size-18"></i>
+                     </a>
+                   </li>
+                    <li class="list-inline-item" *ngIf="offre.status !== 'archivée'">
+                      <a
+                        (click)="toArchive(offre.id)"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        class="px-2 text-danger"
+                      >
+                        <i class="bx bx-archive font-size-18"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <button
+                        routerLink="/recruteur/candidat-details"
+                        type="button"
+                        class="btn btn-sm candidatures"
+                      >
+                        Voir les candidatures
+                      </button>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-container" *ngIf="showCard">
+            <div class="card">
+              <div class="card-header">
+                Details
+                <button
+                  type="button"
+                  class="btn-close"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="card-body">
+                <p>Some details about the user...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination" *ngIf="offres.length > 10">
+    <a class="pagination__link pagination__link--prev">&lsaquo;</a>
+    <a class="pagination__link">1</a>
+    <a class="pagination__link">2</a>
+    <a class="pagination__link">3</a>
+    <span class="pagination__link pagination__link--dots">...</span>
+    <a class="pagination__link">10</a>
+    <a class="pagination__link pagination__link--next">&rsaquo;</a>
+  </div>
+</div>
+<div class="m-5" style="height: 50px"></div>
+<app-footer></app-footer>

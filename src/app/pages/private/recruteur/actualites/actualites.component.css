@@ -1,0 +1,58 @@
+.page-container{
+  padding-bottom: 150px !important;
+}
+.btn, .form-control, .form-input{
+  border-radius: 0 !important;
+}
+.categorie{
+  background-color: var(--kimberly);
+}
+.voir-plus{
+  background-color: var(--kimberly);
+  color: white;
+}
+.voir-plus:hover{
+  background-color: #2D1184;
+}
+.card-header{
+  background-color: white;
+}
+.search-btn{
+  background-color: var(--kimberly);
+  color: white;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+li:hover{
+  background-color: #f1f4f8;
+}
+.card{
+  border: none !important;
+  -webkit-box-shadow: 0 0 15px 0 rgba(130, 130, 130, 0.2);
+        box-shadow: 0 0 15px 0 rgba(130, 130, 130, 0.2);
+}
+#nav2{
+  background-color: var(--laser);
+  height: 48px;
+}
+.nav-link{
+  color: black !important;
+}
+.nav-item:hover{
+  background-color: var(--laser);
+}
+.navs:hover{
+  border-bottom: solid 2px black;
+}
+.nav-active{
+  border-bottom: solid 2px black;
+}
+.padd{
+  padding-bottom: 110px !important;
+}
+
+.text-right{
+text-align:right;
+}

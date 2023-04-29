@@ -1,0 +1,109 @@
+<nav id="nav1" class="navbar navbar-expand-lg p-0">
+  <div class="container px-0">
+      <a class="navbar-brand fw-bold" routerLink="/home"><img src="../../../assets/images/nav-logo.jpeg" class="logo" alt="" /></a>
+      <>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item"><button routerLink="/register" class="btn inscription mx-2">Inscription</button></li>
+              <li class="nav-item"><button routerLink="/login" class="btn connexion">Se connecter</button></li>
+          </ul>
+  </div>
+</nav>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+      <div class="h-100">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+              <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/login">Offres d’emploi</a></li>
+              <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/login">Actualités</a></li>
+              <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/login">Dépôt de CV</a></li>
+          </ul>
+      </div>
+      <a class="nav-link recruteur ps-5" routerLink="/espace-recruteur">Espace recruteur <i class="bi bi-arrow-right px-2"></i></a>
+  </div>
+</nav>
+<div >
+  <div class="row align-items-center justify-content-center mb-4 pb-5 mx-5">
+    <div class="col col-lg-6 align-items-center">
+      <div class="card card-4 shadow p-3 my-5 bg-body rounded">
+        <div class="card-body">
+          <h2 class="title text-center py-2">Contacter nous</h2>
+          <form [formGroup]="loginForm">
+            <!-- Nom complet input -->
+            <label class="form-label" for="fullname">Nom & Prenom</label>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-user"></i></span>
+              <input
+              id="fullname"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="invalidTouchedDirtyFormControl('fullname')"
+              formControlName="fullname">
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl('fullname') && fullname.errors?.['required']">
+                Le champ nom et prenom est oblogatoire.
+              </div>
+            </div>
+
+            <!-- Email input -->
+            <label class="form-label" for="email">Email</label>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-envelope"></i></span>
+              <input
+              id="email"
+              type="email"
+              class="form-control"
+              [class.is-invalid]="invalidTouchedDirtyFormControl('email')"
+              formControlName="email">
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl('email') && email.errors?.['required']">
+                Le champ email est oblogatoire.
+              </div>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl('email') && email.errors?.['email']">
+                Le champ email est invalide.
+              </div>
+            </div>
+
+            <!-- Message input -->
+            <label class="form-label" for="message">Message</label>
+            <div class="input-group mb-3 has-validation">
+              <!-- <span class="input-group-text" id="messagePrepend"><i class="fa fa-send"></i></span> -->
+              <textarea
+                id="message"
+                type="text"
+                aria-describedby="messagePrepend"
+                class="form-control"
+                [class.is-invalid]="invalidTouchedDirtyFormControl('message')"
+                formControlName="message">
+              </textarea>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl('message') && message.errors?.['required']">
+                Le champ message est oblogatoire.
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="text-center">
+              <button [disabled]="loginForm.invalid" type="submit" class="btn inscription mx-2"><i class="fa fa-send pe-2"></i> Envoyer</button>
+            </div>
+
+            <!-- login buttons -->
+            <div class="text-center">
+              <p class="my-4">Vous pouvez nous contacter sur </p>
+              <button type="button" class="btn mx-1 facebook">
+                <i class="fa fa-facebook-f"></i>
+              </button>
+              <button type="button" class="btn mx-1 google">
+                <i class="fa fa-google"></i>
+              </button>
+              <button type="button" class="btn mx-1 linkedin">
+                <i class="fa fa-linkedin"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col p-3 my-5">
+      <div class="illustration w-100 m-auto">
+          <img class="w-100" src="/assets/images/contact2.jpg">
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

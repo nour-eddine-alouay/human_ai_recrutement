@@ -1,0 +1,730 @@
+<app-navbar-recruteur></app-navbar-recruteur>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mqb-lg-0 h-100">
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/recruteur/profils"
+            >Profils</a
+          >
+        </li>
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/recruteur/actualites"
+            >Actualités</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="px-0 py-5 bg-light d-flex justify-content-center">
+  <section id="content" class="container mx-0 px-0">
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col py-3">
+        <div class="tab-block">
+          <div class="tab-content shadow-sm p-5" id="add-offre-steps">
+            <h4 *ngIf="!id" class="mb-5 text-center">Créer une offre</h4>
+            <h4 *ngIf="id" class="mb-5 text-center">Modifier l'offre {{offre?.titre}}</h4>
+            <!--  -->
+            <!-- tab1 : poste -->
+            <!--  -->
+            <div *ngIf="selectedTab === 1">
+              <!-- timeline -->
+              <div class="row">
+                <div class="col">
+                  <div class="timeline-steps aos-init aos-animate" data-aos="fade-up">
+                    <div class="timeline-step">
+                      <div class="timeline-content">
+                        <div class="inner-circle active"></div>
+                        <p class="h6 mb-0 mb-lg-0">Poste d'offre</p>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <div class="timeline-content">
+                        <div class="inner-circle"></div>
+                        <p class="h6 text-muted mb-0 mb-lg-0">Profil demandé</p>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <div class="timeline-content">
+                        <div class="inner-circle"></div>
+                        <p class="h6 text-muted mb-0 mb-lg-0">Aperçu d'offre</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="posteForm">
+                  <div class="mb-3 fw-bold">Titre et contrat</div>
+                  <hr/>
+                  <!-- titre d'offre et contrat -->
+                  <div class="row gx-3 mb-3">
+                    <!-- titre d'offre -->
+                    <div class="col-md-4">
+                      <label class="small form-label" for="titre">Titre d'offre</label>
+                      <div class="input-group has-validation">
+                        <input
+                          id="titre"
+                          type="text"
+                          maxlength="255"
+                          class="form-control"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'titre') && titre.errors?.['required']"
+                          formControlName="titre"
+                        />
+                        <div class="invalid-feedback">
+                          Le champ titre d'offre est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- domaine -->
+                    <div class="col-md-4">
+                      <label class="form-label" for="domaine">Domaine d'activié</label>
+                      <div class="input-group has-validation">
+                        <select
+                        id="domaine"
+                        formControlName="domaine"
+                        [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'domaine') && domaine.errors?.['required']"
+                        class="form-select px-4 rounded shadow-sm">
+                          &gt;
+                          <option disabled="">Choisir votre domaine</option>
+                          <option
+                          *ngFor="let domaine of domaines"
+                          value="{{domaine.value}}">
+                              {{domaine.name}}
+                          </option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Le champ domaine d'activié est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- type contrat -->
+                    <div class="col-md-4">
+                      <label class="small form-label" for="site">Type de contrat</label>
+                      <div class="input-group has-validation">
+                        <select
+                          id="type_contrat"
+                          formControlName="type_contrat"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'type_contrat') && type_contrat.errors?.['required']"
+                          class="form-select px-4 rounded shadow-sm"
+                        >
+                          &gt;
+                          <option disabled="" selected="selected">Type de contrat</option>
+                          <option value="CDI">CDI</option>
+                          <option value="CDD">CDD</option>
+                          <option value="Intérim">Intérim</option>
+                          <option value="Franchises">Franchises</option>
+                          <option value="Contractuel">Contractuel</option>
+                          <option value="Statutaire">Statutaire</option>
+                          <option value="Avis de concours">Avis de concours</option>
+                          <option value="Indépendant / Freelance">Indépendant / Freelance</option>
+                          <option value="Alternance">Alternance</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Le champ type de contrat est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 fw-bold">Description</div>
+                  <hr />
+                  <!-- Description du poste -->
+                  <div class="row gx-3 mb-3">
+                    <label class="small form-label" for="description">Description du poste</label>
+                    <div class="input-group has-validation mb-1">
+                      <textarea
+                        id="description"
+                        type="text"
+                        placeholder="Ecrivez ici ..."
+                        rows="6"
+                        class="form-control"
+                        [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'description') && description_poste.errors?.['required']"
+                        formControlName="description"
+                      ></textarea>
+                      <div class="invalid-feedback">
+                        Le champ description du poste est oblogatoire.
+                      </div>
+                    </div>
+                    <span class="small text-secondary"
+                      >La description du poste est un élément important pour le
+                      référencement de votre offre.
+                    </span>
+                    <span class="small text-secondary"
+                      >Cette information sera prise en compte dans les
+                      recherches mot-clés. Il est recommandé d’écrire 800
+                      caractères à minima.</span
+                    >
+                    <span class="small text-secondary"
+                      >Tous les éléments de type email, téléphone et URL
+                      renseignés dans les descriptifs de votre offre seront
+                      masqués.</span
+                    >
+                    <span class="small text-secondary"
+                      >Tous les éléments de type URL feront l’objet d’une
+                      relecture par notre relation client.</span
+                    >
+                    <span class="small text-secondary"
+                      >Le descriptif d’une offre basée en France doit
+                      obligatoirement être rédigé en français.</span
+                    >
+                  </div>
+
+                  <div class="mb-3 fw-bold">Salaire et mode de travail</div>
+                  <hr />
+                  <!-- Salaire -->
+                  <div class="row gx-3 mb-3">
+                    <!-- Salaire minimum -->
+                    <div class="col-md-6">
+                      <label class="small form-label" for="salaire_min"
+                        >Salaire Minimum</label
+                      >
+                      <div class="input-group has-validation">
+                        <span class="input-group-text"
+                          ><i class="fa fa-money"></i
+                        ></span>
+                        <input
+                          id="salaire_min"
+                          type="number"
+                          maxlength="255"
+                          class="form-control"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'salaire_min') && salaire_min.errors?.['required']"
+                          formControlName="salaire_min"
+                        />
+                        <div class="invalid-feedback">
+                          Le champ salaire minimum est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Salaire maximum -->
+                    <div class="col-md-6">
+                      <label class="small form-label" for="salaire_max">Salaire Maximum</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text"
+                          ><i class="fa fa-money"></i
+                        ></span>
+                        <input
+                          id="salaire_max"
+                          type="number"
+                          maxlength="255"
+                          class="form-control"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'salaire_max') && salaire_max.errors?.['required']"
+                          formControlName="salaire_max"
+                        />
+                        <div class="invalid-feedback">
+                          Le champ salaire maximum est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- show salaire -->
+                    <div class="col-md-6 mt-1">
+                      <div class="form-check">
+                        <input
+                          id="hide_salaire"
+                          class="form-check-input"
+                          type="checkbox"
+                          formControlName="hide_salaire"
+                        />
+                        <label class="form-check-label" for="hide_salaire">
+                          Masquer le salaire sur l'offre d'emploi
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Mode de travail -->
+                  <div class="row gx-3 mb-3">
+                    <label class="small form-label" for="site">Mode de travail</label>
+                    <div class="col mt-2">
+                      <div class="input-group has-validation">
+                        <select
+                          id="mode"
+                          formControlName="mode"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'mode') && mode.errors?.['required']"
+                          class="form-select px-4 rounded shadow-sm"
+                        >
+                          &gt;
+                          <option selected="selected" disabled="">
+                            Mode de travail
+                          </option>
+                          <option value="Télétravail">Télétravail</option>
+                          <option value="Home office">Home office</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Le champ mode de travail est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <span
+                        *ngIf="mode.value == 'Télétravail'"
+                        class="small text-secondary"
+                      >
+                        <span class="fw-bold">Le télétravail</span> doit être
+                        exercé « dans le cadre d’un contrat de travail ou d’un
+                        avenant à celui-ci ». Les conditions d’exécution du
+                        télétravail doivent être précisées, notamment les jours
+                        télétravaillés et les plages horaires pendant lesquelles
+                        le salarié doit être joignable.
+                      </span>
+                      <span
+                        *ngIf="mode.value == 'Home office'"
+                        class="small text-secondary"
+                      >
+                        <span class="fw-bold">Home office</span> possibilité
+                        pour le travailleur salarié qui accomplit habituellement
+                        un travail au sein de son entreprise de le faire
+                        ponctuellement depuis son domicile. Contrairement au
+                        télétravail, le seul accord verbal de l’entreprise
+                        suffit.
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 fw-bold">Localisation du poste</div>
+                  <hr />
+                  <!-- Localisation du poste -->
+                  <div class="row gx-3 mb-3">
+                    <!-- pays -->
+                    <div class="col-md-6">
+                      <label class="small form-label" for="pays">Pays</label>
+                      <div class="input-group has-validation">
+                        <select
+                          id="pays"
+                          formControlName="pays"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'pays') && pays.errors?.['required']"
+                          class="form-select ps-3 rounded shadow-sm" >
+                          <option disabled=""> Sélectionnez votre pays</option>
+                          <option *ngFor="let pays of paysList"
+                            [selected]="pays.code === 'MA'"
+                            [value]="pays.code">
+                              {{pays.name}}
+                          </option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Le champ pays est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- adresse précise -->
+                    <div class="col-md-6">
+                      <label class="small form-label" for="adresse">Adresse précise</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                        <input
+                          id="adresse"
+                          type="text"
+                          maxlength="255"
+                          class="form-control"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(posteForm,'adresse') && adresse.errors?.['required']"
+                          formControlName="adresse"
+                        />
+                        <div class="invalid-feedback">
+                          Le champ adresse précise est oblogatoire.
+                        </div>
+                      </div>
+                      <span class="small text-secondary">
+                        L'adresse renseignée permet de localiser votre offre avec précision.
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Suivant -->
+                  <div class="d-flex justify-content-end align-items-end mt-5">
+                    <button
+                      [disabled]="posteForm.invalid"
+                      (click)="suivant(2)"
+                      class="btn d-block d-sm-inline-block postule"
+                      type="button"
+                    >
+                      Suivant
+                      <i
+                        class="fa fa-chevron-circle-right mx-1"
+                        aria-hidden="true"
+                      ></i>
+                    </button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+            <!--  -->
+            <!-- tab2 : profil -->
+            <!--  -->
+            <div *ngIf="selectedTab === 2">
+              <div class="row">
+                <div class="col">
+                  <div
+                    class="timeline-steps aos-init aos-animate"
+                    data-aos="fade-up"
+                  >
+                    <div class="timeline-step">
+                      <div class="timeline-content">
+                        <div class="inner-circle"></div>
+                        <p class="h6 text-muted mb-0 mb-lg-0">Poste d'offre</p>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <div class="timeline-content">
+                        <div class="inner-circle active"></div>
+                        <p class="h6 mb-0 mb-lg-0">Profil demandé</p>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <div class="timeline-content">
+                        <div class="inner-circle"></div>
+                        <p class="h6 text-muted mb-0 mb-lg-0">Aperçu d'offre</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <form [formGroup]="profilForm">
+                  <div class="mb-3 fw-bold">Description</div>
+                  <hr />
+
+                  <!-- Description du profil -->
+                  <div class="row gx-3 mb-3">
+                    <label class="small form-label" for="description"
+                      >Description du profil</label
+                    >
+                    <div class="input-group has-validation mb-1">
+                      <textarea
+                        id="description"
+                        type="text"
+                        placeholder="Ecrivez ici ..."
+                        rows="6"
+                        class="form-control"
+                        [class.is-invalid]="invalidTouchedDirtyFormControl(profilForm,'description') && description_profil.errors?.['required']"
+                        formControlName="description"
+                      ></textarea>
+                      <div class="invalid-feedback">
+                        Le champ description du profil est oblogatoire.
+                      </div>
+                    </div>
+                    <span class="small text-secondary"
+                      >La description du profil est un élément important pour le
+                      référencement de votre offre.</span
+                    >
+                    <span class="small text-secondary"
+                      >Cette information sera prise en compte dans les
+                      recherches mot-clés. Il est recommandé d’écrire 500
+                      caractères à minima.</span
+                    >
+                    <span class="small text-secondary"
+                      >Tous les éléments de type email, téléphone et URL
+                      renseignés dans les descriptifs de votre offre seront
+                      masqués.</span
+                    >
+                    <span class="small text-secondary"
+                      >Tous les éléments de type URL feront l’objet d’une
+                      relecture par notre relation client.</span
+                    >
+                  </div>
+
+                  <div class="mb-3 fw-bold">Compétences</div>
+                  <hr />
+                  <!-- Compétences -->
+                  <div class="row gx-3 mb-3">
+                    <label class="small form-label" for="adresse">Compétences requises</label>
+                    <div class="d-flex flex-wrap mb-2">
+                      <div
+                        *ngFor="let c of competencesArray; let i = index"
+                        class="bullet rounded-5 text-white ps-3 pe-1 py-1 d-flex align-items-center me-2 mb-2">
+                        {{ c }}
+                        <button
+                          class="btn btn-sm text-white remove-competence"
+                          (click)="removeCompetence(i)"
+                          type="button"
+                        >
+                          <i class="bi bi-x-circle-fill"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <span class="small text-secondary">
+                        Pour ajouter un mot clé il suffit de clicker sur la touche Entrer du clavier
+                      </span>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text"><i class="fa fa-trophy"></i></span>
+                        <input
+                          id="competences"
+                          type="text"
+                          maxlength="255"
+                          class="form-control"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(profilForm,'competences') && competencesArray.length < 1"
+                          formControlName="competences"
+                          (keyup.enter)="addCompetence()"
+                        />
+                        <div class="input-group-append mx-2">
+                          <button
+                            id="add-competence"
+                            class="btn btn-secondary"
+                            type="button"
+                            (click)="addCompetence()"
+                          >
+                            <i class="fa fa-plus"></i>
+                          </button>
+                        </div>
+                        <div class="invalid-feedback">
+                          Le champ compétences requises est oblogatoire.
+                        </div>
+                      </div>
+                      <span class="small text-secondary"
+                        >Les compétences renseignées permettent à votre offre
+                        d'apparaître aux candidats idéaux grâce à notre système de
+                        correspondance.
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 mt-5 fw-bold">Expériences et études</div><hr>
+                  <!-- experiences et etudes -->
+                  <div class="row gx-3 mb-3">
+                    <!-- etudes -->
+                    <div class="col-md-6">
+                      <label class="small form-label" for="niveau_etude">Niveau d'études</label>
+                      <div class="input-group has-validation">
+                        <select
+                          id="niveau_etude"
+                          formControlName="niveau_etude"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(profilForm,'niveau_etude') && niveau_etude.errors?.['required']"
+                          class="form-select px-4 mb-4 rounded shadow-sm">
+                            <option value="Bac">Bac</option>
+                            <option value="Bac+1">Bac + 1</option>
+                            <option value="Bac+2">Bac + 2</option>
+                            <option value="Bac+3">Bac + 3</option>
+                            <option value="Bac+4">Bac + 4</option>
+                            <option value="Bac+5 ou plus">Bac + 5 ou plus</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Le champ niveau d'études est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- experiences -->
+                    <div class="col-md-6">
+                      <label class="small form-label" for="niveau_experience">Niveau d'expérience</label>
+                      <div class="input-group has-validation">
+                        <select
+                          id="niveau_experience"
+                          formControlName="niveau_experience"
+                          [class.is-invalid]="invalidTouchedDirtyFormControl(profilForm,'niveau_experience') && niveau_experience.errors?.['required']"
+                          class="form-select px-4 mb-4 rounded shadow-sm">
+                          <option value="etudiant" selected="">
+                            Étudiant
+                          </option>
+                          <option value="diplome">
+                              Jeune diplômé, débutant (&lt; 1 an)
+                          </option>
+                          <option value="entre_1_2">
+                              De 1 à 2 ans
+                          </option>
+                          <option value="entre_2_4">
+                              De 2 à 4 ans
+                          </option>
+                          <option value="entre_4_6">
+                              De 4 à 6 ans
+                          </option>
+                          <option value="entre_7_10">
+                              De 7 à 10 ans
+                          </option>
+                          <option value="sup_10">
+                              Supérieur à 10 ans
+                          </option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Le champ niveau d'expérience est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-end mt-5">
+                    <!-- Retour -->
+                    <button
+                      (click)="retour(1)"
+                      class="btn d-block d-sm-inline-block"
+                      type="button"
+                    >
+                      <i class="fa fa-chevron-circle-left mx-1"></i>
+                      Retour
+                    </button>
+                    <div>
+                      <!-- Aperçu -->
+                      <button
+                        (click)="suivant(3)"
+                        [disabled]="profilForm.invalid"
+                        class="btn d-block d-sm-inline-block mx-1 postule"
+                        type="button"
+                      >
+                        Aperçu
+                        <i class="fa fa-chevron-circle-right mx-1"></i>
+                      </button>
+                      <!-- Ajouter -->
+                      <button
+                        *ngIf="!id"
+                        (click)="ajouterOffre()"
+                        [disabled]="profilForm.invalid || posteForm.invalid"
+                        class="btn btn-success d-block d-sm-inline-block"
+                        type="button"
+                      >
+                        Ajouter
+                        <i class="fa fa-plus-circle mx-1"></i>
+                      </button>
+                      <!-- Modifier -->
+                      <button
+                        *ngIf="id"
+                        (click)="modifierOffre()"
+                        [disabled]="profilForm.invalid || posteForm.invalid"
+                        class="btn btn-success d-block d-sm-inline-block"
+                        type="button"
+                      >
+                        Modifier
+                        <i class="fa fa-pencil mx-1"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!--  -->
+            <!-- tab3 : aperçu profil -->
+            <!--  -->
+            <div *ngIf="selectedTab === 3">
+              <div class="row">
+                <form>
+                  <div class="col">
+                    <div
+                      class="timeline-steps aos-init aos-animate"
+                      data-aos="fade-up"
+                    >
+                      <div class="timeline-step">
+                        <div class="timeline-content">
+                          <div class="inner-circle"></div>
+                          <p class="h6 text-muted mb-0 mb-lg-0">
+                            Poste d'offre
+                          </p>
+                        </div>
+                      </div>
+                      <div class="timeline-step">
+                        <div class="timeline-content">
+                          <div class="inner-circle"></div>
+                          <p class="h6 text-muted mb-0 mb-lg-0">
+                            Profil demandé
+                          </p>
+                        </div>
+                      </div>
+                      <div class="timeline-step">
+                        <div class="timeline-content">
+                          <div class="inner-circle active"></div>
+                          <p class="h6 mb-0 mb-lg-0">Aperçu d'offre</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="job-box my-4">
+                      <div
+                        class="job-left my-2 d-md-flex align-items-center flex-wrap"
+                      >
+                        <div
+                          class="img-holder me-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex"
+                        >
+                          <img
+                            src="../../../../../assets/images/sqli.png"
+                            alt=""
+                          />
+                        </div>
+                        <div class="job-content" style="flex-grow: 1">
+                          <h5 class="text-md-left">{{ titre.value }}</h5>
+                          <ul
+                            class="d-md-flex flex-wrap text-capitalize ff-open-sans justify-content-evenly"
+                          >
+                            <li class="me-md-4">
+                              <i class="bi bi-geo-alt-fill me-2"></i>
+                              {{ adresse.value }}
+                            </li>
+                            <li class="me-md-4" *ngIf="!hide_salaire.value">
+                              <i class="bi bi-cash-stack me-2"></i>
+                              {{ salaire_min.value }}-{{ salaire_max.value }}
+                            </li>
+                            <li class="me-md-4" *ngIf="hide_salaire.value">
+                              <i class="bi bi-cash-stack me-2"></i> À discuter
+                            </li>
+                            <li class="me-md-4">
+                              <i class="bi bi-briefcase-fill me-2"></i>
+                              {{ mode.value }}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-evenly">
+                        <div
+                          class="job-right my-2 flex-shrink-0 col-md-6 col-8"
+                        >
+                          <a class="btn d-block w-100 d-sm-inline-block postule"
+                            >Postuler maintenant</a
+                          >
+                        </div>
+                        <div class="d-flex justify-content-end">
+                          <a class="btn offre-nav"
+                            ><i class="bi bi-share-fill"></i
+                          ></a>
+                          <a class="btn offre-nav"
+                            ><i class="bi bi-bookmarks"></i
+                          ></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-end mt-5"
+                    >
+                      <!-- Retour -->
+                      <button
+                        (click)="retour(2)"
+                        class="btn d-block d-sm-inline-block"
+                        type="button"
+                      >
+                        <i class="fa fa-chevron-circle-left mx-1"></i>
+                        Retour
+                      </button>
+                      <!-- Ajouter -->
+                      <button
+                        *ngIf="!id"
+                        (click)="ajouterOffre()"
+                        [disabled]="profilForm.invalid || posteForm.invalid"
+                        class="btn btn-success d-block d-sm-inline-block"
+                        type="button"
+                      >
+                        Ajouter
+                        <i class="fa fa-plus-circle mx-1"></i>
+                      </button>
+                      <!-- Modifier -->
+                      <button
+                        *ngIf="id"
+                        (click)="modifierOffre()"
+                        [disabled]="profilForm.invalid || posteForm.invalid"
+                        class="btn btn-success d-block d-sm-inline-block"
+                        type="button"
+                      >
+                        Modifier
+                        <i class="fa fa-pencil mx-1"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="m-4" style="height: 50px"></div>
+<app-footer></app-footer>

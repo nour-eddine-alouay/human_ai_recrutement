@@ -1,0 +1,151 @@
+<app-navbar-candidat></app-navbar-candidat>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/candidat/home"
+            >Offres d’emploi</a
+          >
+        </li>
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100 nav-active" routerLink="/candidat/entreprises"
+            >Entreprises</a
+          >
+        </li>
+        <li class="nav-item h-100">
+          <a class="nav-link navs mx-4 h-100" routerLink="/candidat/actualites"
+            >Actualités</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="p-5 bg-light page-container">
+  <div [class.mb-5]="!showFilter" class="px-5 mb-3 d-flex justify-content-between">
+    <!-- toggle filters -->
+    <div>
+      <button class="btn filter-btn" (click)="toggleFilters()"><i class="bi bi-sliders"></i></button>
+    </div>
+    <!-- search -->
+    <div class="col-6 mot-cle">
+      <input
+        type="text"
+        placeholder="Mot clé (titre, compétances...)"
+        class="w-100"
+        [(ngModel)]="kaywords"
+        (input)="filterEntreprises(1)"
+      />
+    </div>
+    <!-- Rechercher -->
+    <div class="col-2">
+      <button
+        class="btn search-btn w-100 postule"
+        style="height: 36px"
+        (click)="filterEntreprises(1)"
+      >
+        Rechercher
+        <i class="fa fa-search ms-3" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="showFilter" class="px-5 mb-5 d-flex justify-content-start">
+    <!-- pays -->
+    <div class="col-2 select me-4">
+      <ul class="p-0">
+        <div class="selectbox d-flex justify-content-between" (click)="isPays = !isPays">
+          <li class="text-truncate">{{ pays }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="isPays" class="drop scrollable overflow-auto" style="height: 300px;">
+          <li class="option" (click)="selectPays('Tout')">Tout</li>
+          <li *ngFor="let pays of paysList" class="option" (click)="selectPays(pays.name)">
+            {{pays.name}}
+          </li>
+        </div>
+      </ul>
+    </div>
+    <!-- domaine -->
+    <div class="col-2 select me-4">
+      <ul class="p-0">
+        <div class="selectbox d-flex justify-content-between" (click)="isDomaine = !isDomaine">
+          <li class="text-truncate">{{ domaine }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="isDomaine" class="drop scrollable overflow-auto" style="height: 300px;">
+          <li class="option" (click)="selectDomaine('Tout')">Tout</li>
+          <li *ngFor="let domaine of domaines" class="option" (click)="selectDomaine(domaine.name)">
+            {{domaine.name}}
+          </li>
+        </div>
+      </ul>
+    </div>
+    <!-- type -->
+    <div class="col-2 select me-5">
+      <ul class="p-0">
+        <div class="selectbox d-flex justify-content-between" (click)="isType = !isType">
+          <li class="text-truncate">{{ type }}</li>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div *ngIf="isType" class="drop scrollable overflow-auto">
+          <li class="option" (click)="selectType('Tout')">Tout</li>
+          <li *ngFor="let type of types" class="option" (click)="selectType(type.name)">
+            {{type.name}}
+          </li>
+        </div>
+      </ul>
+    </div>
+    <!-- Appliquer -->
+    <div class="col-1">
+      <button
+        (click)="filterEntreprises(1)"
+        class="btn search-btn w-100 postule"
+        style="height: 36px">
+        Appliquer
+      </button>
+    </div>
+  </div>
+  <div class="px-5">
+    <div class="card-group">
+      <div *ngFor="let entreprise of filteredItems" class="entreprise col-lg-6 col-xl-6">
+        <div class="card p-3 mb-5 mb-xl-0">
+          <div class="row no-gutters">
+            <div class="col-md-4 d-flex align-items-center">
+              <img
+                (click)="voirDetailsEntreprise(entreprise?.id)"
+                src="{{entreprise?.image_url?entreprise?.image_url:'../../../assets/images/default_profil/default_entreprise.png'}}"
+                class="m-1 align-self-center logo"
+                alt="logo d'entreprise"
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 (click)="voirDetailsEntreprise(entreprise?.id)" class="mb-2">
+                  <span class="nom-entreprise">{{entreprise?.nom?.toUpperCase()}}</span>
+                </h5>
+                <span class="flag-icon flag-icon-{{entreprise?.pays.toLowerCase()}} mb-2"></span>
+                <p class="card-text text-muted mb-1">{{getType(entreprise?.type)}}</p>
+                <p class="card-text text-muted">{{getDomaine(entreprise?.domaine)}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end offres">
+            <i class="bi bi-briefcase-fill me-2"></i>
+            {{entreprise?.nombre_offres}} offres
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="filteredItems" class="mt-5 d-flex justify-content-center">
+    <ul class="pagination mt-1 mb-0">
+      <li [class.disabled]="" class="page-item"><button (click)="changePage(currentPage-1)" [disabled]="currentPage==1" class="page-link" type="button">‹</button></li>
+      <li *ngFor="let page of pageNumbers" [class.active]="currentPage==page" class="active page-item">
+        <button (click)="changePage(page)" class="page-link" type="button">{{page}}</button>
+      </li>
+      <li [class.disabled]="" class="page-item"><button (click)="changePage(currentPage+1)" [disabled]="currentPage==totalPages" class="page-link" type="button">›</button></li>
+    </ul>
+  </div>
+</div>
+<app-footer></app-footer>

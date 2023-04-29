@@ -1,0 +1,1510 @@
+<app-navbar-candidat></app-navbar-candidat>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/home">Offres d’emploi</a></li>
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/entreprises">Entreprises</a></li>
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/actualites">Actualités</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="px-0 py-5 bg-light d-flex justify-content-center">
+  <section id="content" class="container mx-0 px-0">
+    <div class="row">
+        <div class="col-md-4">
+          <!-- Profile picture card-->
+          <div class="panel mb-4">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-user"></i>
+              </span>
+              <span class="panel-title"> Profile </span>
+            </div>
+            <!-- Profile picture image-->
+            <div class="panel-body text-center">
+                <img
+                class="img-account-profile rounded-circle mb-2"
+                [src]="Photo?photo_src:PersonalInfo?.civilite=='Madame'?'../../../assets/images/default_profil/madame.jpg':'../../../assets/images/default_profil/monsieur.jpg'"
+                alt="photo de profil">
+                <div class="mt-3">
+                  <h4>{{PersonalInfo?.nom}}</h4>
+                  <h4>{{PersonalInfo?.prenom}}</h4>
+                  <p class="text-secondary mb-1">{{ProfessionalInfo?.profession}}</p>
+                  <p class="text-muted font-size-sm">{{pays_name}} {{PersonalInfo?.ville}}</p>
+                </div>
+                <small class="text-secondary small">Autorisé JPG, GIF or PNG. Max est 3MB</small>
+                <div class="mx-3 mt-3">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-success btn-upload"
+                  >
+                    Uploader une photo
+                    <input
+                      id="photo"
+                      class="account-settings-fileinput"
+                      type="file"
+                      (change)="uploadPhoto($event)"
+                      accept="image/jpeg, image/gif, image/png"
+                      asize="4000000">
+                  </button>
+                  <a routerLink="/candidat/mon-profil" class="btn btn-sm btn-outline-dark mx-2" type="button">
+                    Aperçu
+                    <span><i class="fa fa-external-link ms-2"></i></span>
+                  </a>
+                </div>
+            </div>
+          </div>
+          <!-- Valeurs -->
+          <div class="panel">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-star"></i>
+              </span>
+              <span class="panel-title"> Valeurs </span>
+            </div>
+            <div class="panel-body">
+              <span *ngFor="let val_des of valeurs_descriptions, let index=index">
+                <span
+                  *ngIf="val_des.star"
+                  class="badge bg-warning mx-1 py-1">
+                  {{val_des.valeur}}
+                </span>
+              </span>
+            </div>
+          </div>
+          <!-- Compétences -->
+          <div class="panel">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-trophy"></i>
+              </span>
+              <span class="panel-title"> Compétences </span>
+            </div>
+            <div class="panel-body">
+              <span class="badge bg-warning mx-1 py-1">Default</span>
+              <span class="badge bg-primary mx-1 py-1">Primary</span>
+              <span class="badge bg-info mx-1 py-1">Success</span>
+              <span class="badge bg-success mx-1 py-1">Info</span>
+              <span class="badge bg-secondary mx-1 py-1">secondary</span> ...
+            </div>
+          </div>
+          <!-- Etat de profil -->
+          <div class="panel">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-star"></i>
+              </span>
+              <span class="panel-title"> Etat de profil</span>
+            </div>
+            <div class="panel-body pn">
+              <table class="table mbn tc-icon-1 tc-med-2 tc-bold-last">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="fa fa-user text-info"></span>
+                    </td>
+                    <td>Données Personnelles</td>
+                    <td>
+                      <span *ngIf="PersonalInfo?.isCompleted" class="badge bg-success">completé</span>
+                      <span *ngIf="!PersonalInfo?.isCompleted" class="badge bg-danger">non completé</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-briefcase text-primary"></span>
+                    </td>
+                    <td>Données Professionnelles</td>
+                    <td>
+                      <span *ngIf="ProfessionalInfo?.isCompleted" class="badge bg-success">completé</span>
+                      <span *ngIf="!ProfessionalInfo?.isCompleted" class="badge bg-danger">non completé</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-file-pdf-o text-primary"></span>
+                    </td>
+                    <td>CV</td>
+                    <td>
+                      <span *ngIf="CV" class="badge bg-success">importé</span>
+                      <span *ngIf="!CV" class="badge bg-danger">non importé</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-file-video-o  text-primary"></span>
+                    </td>
+                    <td>Video</td>
+                    <td>
+                      <span *ngIf="Video" class="badge bg-success">importé</span>
+                      <span *ngIf="!Video" class="badge bg-danger">non importé</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-graduation-cap text-success"></span>
+                    </td>
+                    <td>Formations</td>
+                    <td>
+                      <span *ngIf="Formations?.length!=0" class="badge bg-success">ajouté</span>
+                      <span *ngIf="Formations?.length==0" class="badge bg-danger">pas encore</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-plus-circle text-success"></span>
+                    </td>
+                    <td>Experiences</td>
+                    <td>
+                      <span *ngIf="Experiences?.length!=0" class="badge bg-success">ajouté</span>
+                      <span *ngIf="Experiences?.length==0" class="badge bg-danger">pas encore</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-certificate text-success"></span>
+                    </td>
+                    <td>Certifications</td>
+                    <td>
+                      <span *ngIf="Certifications?.length!=0" class="badge bg-success">ajouté</span>
+                      <span *ngIf="Certifications?.length==0" class="badge bg-danger">pas encore</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-star text-warning"></span>
+                    </td>
+                    <td>Valuers Humaines</td>
+                    <td>
+                      <span *ngIf="isValeursHumainesCompleted" class="badge bg-success">completé</span>
+                      <span *ngIf="!isValeursHumainesCompleted" class="badge bg-danger">non completé</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="tab-block">
+            <ul class="nav nav-tabs mb-2" id="nav-tab">
+              <li [class.active]="selectedTab == 1" (click)="selectTab(1)">
+                <button [class.active]="selectedTab == 1" class="nav-link" type="button">
+                  Personnelles
+                  <span class="panel-icon"><i class="fa fa-user text-info"></i></span>
+                </button>
+              </li>
+              <li [class.active]="selectedTab == 2" (click)="selectTab(2)">
+                <button [class.active]="selectedTab == 2" class="nav-link" type="button">
+                  Valeurs
+                  <span class="panel-icon"><i class="fa fa-star text-warning"></i></span>
+                </button>
+              </li>
+              <li [class.active]="selectedTab == 3" (click)="selectTab(3)">
+                <button [class.active]="selectedTab == 3" class="nav-link" type="button">
+                  Professionnelles
+                  <span class="panel-icon"><i class="fa fa-briefcase text-primary"></i></span>
+                </button>
+              </li>
+              <li [class.active]="selectedTab == 4" (click)="selectTab(4)">
+                <button [class.active]="selectedTab == 4" class="nav-link" type="button">
+                  Paramètres
+                  <span class="panel-icon"><i class="fa fa-gear text-danger"></i></span>
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content p30">
+              <!--  -->
+              <!-- tab1 : Mes données Personnelles -->
+              <!--  -->
+              <div *ngIf="selectedTab === 1">
+                <div class="card-header text-center mb-3 fw-bold">Mes données Personnelles</div>
+                <div class="card-body">
+                    <form [formGroup]="personalInfoForm">
+                        <div class="mb-3 fw-bold">Données d'identité</div><hr>
+                        <!-- nom et prenom -->
+                        <div class="row gx-3 mb-3">
+                          <!-- nom -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="nom">Nom</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              <input
+                              id="nom"
+                              type="text"
+                              maxlength="255"
+                              class="form-control is-invalid"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'nom') && nom.errors?.['required']"
+                              formControlName="nom">
+                              <div class="invalid-feedback">
+                                Le champ nom est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- prenom -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="prenom">Prenom</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              <input
+                              id="prenom"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'prenom') && prenom.errors?.['required']"
+                              formControlName="prenom">
+                              <div class="invalid-feedback">
+                                Le champ prenom est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- civilité et état civilité -->
+                        <div class="row gx-3 mb-3">
+                          <!-- civilite -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="civilite">Civilité</label>
+                            <div class="input-group has-validation">
+                              <select
+                                id="civilite"
+                                formControlName="civilite"
+                                [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'civilite') && civilite.errors?.['required']"
+                                class="form-select px-4 rounded shadow-sm is-invalid">
+                                  <option value="Monsieur">Monsieur</option>
+                                  <option value="Madame">Madame</option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Le champ civilité est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- etat_civilite -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="etat_civilite">État Civilité</label>
+                            <div class="input-group has-validation">
+                              <select
+                                id="etat_civilite"
+                                formControlName="etat_civilite"
+                                [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'etat_civilite') && etat_civilite.errors?.['required']"
+                                class="form-select px-4 mb-4 rounded shadow-sm">
+                                  <option value="Célibataire">Célibataire</option>
+                                  <option value="Marié">Marié</option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Le champ état civilité est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- telephone et date naissance -->
+                        <div class="row gx-3 mb-3">
+                          <!-- date naissance -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="date_naissance">Date de naissance</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                              <input
+                              id="date_naissance"
+                              type="date"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'date_naissance') && date_naissance.errors?.['required']"
+                              formControlName="date_naissance">
+                              <div class="invalid-feedback">
+                                Le champ date de naissance est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- telephone -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="telephone">Telephone</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                              <input
+                              id="telephone"
+                              type="tel"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'telephone') && telephone.errors?.['required']"
+                              formControlName="telephone">
+                              <div class="invalid-feedback">
+                                Le champ telephone est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- pays et ville -->
+                        <div class="row gx-3 mb-3">
+                          <!-- pays -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="pays">Pays</label>
+                            <div class="input-group has-validation">
+                              <select
+                                id="pays"
+                                formControlName="pays"
+                                [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'pays') && pays.errors?.['required']"
+                                class="form-select ps-3 mb-4 rounded shadow-sm" >
+                                <option disabled=""> Sélectionnez votre pays</option>
+                                <option *ngFor="let pays of paysList"
+                                  [selected]="pays.code === 'MA'"
+                                  [value]="pays.code">
+                                    {{pays.name}}
+                                </option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Le champ pays est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- ville -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="ville">Ville</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-home"></i></span>
+                              <input
+                              id="ville"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'ville') && ville.errors?.['required']"
+                              formControlName="ville">
+                              <div class="invalid-feedback">
+                                Le champ ville est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mb-3 fw-bold">Réseaux sociaux</div><hr>
+                        <!-- linkedin et skype -->
+                        <div class="row gx-3 mb-3">
+                          <!-- LinkedIn -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="linkedin">LinkedIn (URL)</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-linkedin"></i></span>
+                              <input
+                              id="linkedin"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(personalInfoForm,'linkedin') && linkedin.errors?.['required']"
+                              formControlName="linkedin">
+                              <div class="invalid-feedback">
+                                Le champ linkedin est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- skype -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="skype">Skype</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-skype"></i></span>
+                              <input
+                              id="skype"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              formControlName="skype">
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Sauvegarder -->
+                        <div class="d-flex justify-content-end align-items-end mt-5">
+                          <button
+                            [disabled]="personalInfoForm.invalid"
+                            (click)="savePersonalInfo()"
+                            class="btn d-block d-sm-inline-block postule"
+                            type="button">
+                              Sauvegarder
+                          </button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+              <!--  -->
+              <!-- tab2 : Les valeurs humaines -->
+              <!--  -->
+              <div *ngIf="selectedTab === 2">
+                <div class="card-header text-center mb-3 fw-bold">Mes valeurs humaines</div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12 px-0">
+                      <div class="card">
+                        <div class="table-responsive">
+                          <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                            <tbody>
+                                <ng-container *ngFor="let val_des of valeurs_descriptions, let index=index">
+                                  <tr *ngIf="index>=minVal && index<maxVal">
+                                      <td class="text-center">
+                                        <i (click)="toggleValeurHumaine(index)" [ngClass]="{'fa-star star': val_des.star, 'fa-star-o star-none': !val_des.star}" class="fa"></i>
+                                      </td>
+                                      <td><span class="mb-0 text-dark">{{val_des.valeur}}</span></td>
+                                      <td>
+                                        <span class="text-muted" *ngIf="!val_des.isExpanded" >{{firstNWordOfString(val_des.description,3)}}...</span>
+                                        <span class="text-muted" *ngIf="val_des.isExpanded">{{val_des.description}}</span>
+                                      </td>
+                                      <td><i class="fa fa-bars text-muted value-details" (click)="val_des.isExpanded = !val_des.isExpanded"></i></td>
+                                  </tr>
+                                </ng-container>
+                            </tbody>
+                          </table>
+                        </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <ul class="pagination mt-3 mb-0">
+                            <li [class.disabled]="minVal==0" class="page-item"><button (click)="minVal=minVal-15;maxVal=maxVal-15" class="page-link" type="button">‹</button></li>
+                            <li [class.active]="minVal==0&&maxVal==15" class="active page-item"><button (click)="minVal=0;maxVal=15" class="page-link" type="button">1</button></li>
+                            <li [class.active]="minVal==15&&maxVal==30" class="page-item"><button (click)="minVal=15;maxVal=30" class="page-link" type="button">2</button></li>
+                            <li [class.active]="minVal==30&&maxVal==45" class="page-item"><button (click)="minVal=30;maxVal=45" class="page-link" type="button">3</button></li>
+                            <li [class.disabled]="maxVal==45" class="page-item"><button (click)="minVal=minVal+15;maxVal=maxVal+15" class="page-link" type="button">›</button></li>
+                          </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <!-- tab3 : Mes données Professionnelles -->
+              <!--  -->
+              <div *ngIf="selectedTab === 3">
+                <div class="card-header text-center mb-3 fw-bold">Mes données Professionnelles</div>
+                <div class="card-body">
+                    <form [formGroup]="ProfessionalInfoForm">
+                        <div class="mb-3 fw-bold">Compétences et domaine d'activité</div><hr>
+                        <!-- domaine d'activité -->
+                        <div class="row gx-3 mb-3">
+                          <!-- domaine -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="domaine">Domaine d'activié</label>
+                            <div class="input-group has-validation">
+                              <select
+                              id="domaine"
+                              formControlName="domaine"
+                              class="form-select px-4 rounded shadow-sm">
+                                &gt;
+                                <option disabled="">Choisir votre domaine</option>
+                                <option
+                                *ngFor="let domaine of domaines"
+                                value="{{domaine.value}}">
+                                    {{domaine.name}}
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                          <!-- profession -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="profession">Titre professionnel</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+                              <input
+                              id="profession"
+                              type="text"
+                              placeholder="Votre titre professionnel, ex. 'Développeur full-stack'"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(ProfessionalInfoForm,'profession') && profession.errors?.['required']"
+                              formControlName="profession">
+                              <div class="invalid-feedback">
+                                Le champ titre professionnel est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Compétences -->
+                        <div class="row gx-3 mb-3">
+                          <div class="d-flex flex-wrap mb-2">
+                            <div
+                              *ngFor="let c of competencesArray; let i = index"
+                              class="bullet rounded-5 text-white ps-3 pe-1 py-1 d-flex align-items-center me-2 mb-2">
+                              {{ c }}
+                              <button
+                                class="btn btn-sm text-white remove-competence"
+                                (click)="removeCompetence(i)"
+                                type="button"
+                              >
+                                <i class="bi bi-x-circle-fill"></i>
+                              </button>
+                            </div>
+                          </div>
+                          <span class="small text-secondary">
+                            Pour ajouter un mot clé il suffit de clicker sur la touche Entrer du clavier
+                          </span>
+                          <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-trophy"></i></span>
+                            <input
+                              id="competences"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(ProfessionalInfoForm,'competences') && competencesArray.length < 1"
+                              formControlName="competences"
+                              (keyup.enter)="addCompetence()"
+                            />
+                            <div class="input-group-append mx-2">
+                              <button
+                                id="add-competence"
+                                class="btn btn-secondary"
+                                type="button"
+                                (click)="addCompetence()"
+                              >
+                                <i class="fa fa-plus"></i>
+                              </button>
+                            </div>
+                            <div class="invalid-feedback">
+                              Le champ compétences requises est oblogatoire.
+                            </div>
+                          </div>
+                          <span class="small text-secondary">
+                            Les compétences renseignées nous permet de vous suggerer
+                            les offres idéaux grâce à notre système de correspondance.
+                          </span>
+                        </div>
+
+                        <!-- aperçu professionnel -->
+                        <div class="row gx-3 mb-3">
+                          <label class="small form-label" for="apercu">Rédigez un aperçu professionnel (à propos de vous)</label>
+                          <div class="input-group has-validation">
+                            <textarea
+                              id="apercu"
+                              type="text"
+                              placeholder="Ecrivez ici ..."
+                              rows="6"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(ProfessionalInfoForm,'apercu') && apercu.errors?.['required']"
+                              formControlName="apercu"></textarea>
+                            <div class="invalid-feedback">
+                              Le champ apercu professionnel est oblogatoire.
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mb-3 mt-5 fw-bold">Expériences et études</div><hr>
+                        <!-- experiences et etudes -->
+                        <div class="row gx-3 mb-3">
+                          <!-- etudes -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="niveau_etude">Niveau d'études</label>
+                            <div class="input-group has-validation">
+                              <select
+                                id="niveau_etude"
+                                formControlName="niveau_etude"
+                                [class.is-invalid]="invalidTouchedDirtyFormControl(ProfessionalInfoForm,'niveau_etude') && niveau_etude.errors?.['required']"
+                                class="form-select px-4 mb-4 rounded shadow-sm">
+                                  <option value="Bac">Bac</option>
+                                  <option value="Bac+1">Bac + 1</option>
+                                  <option value="Bac+2">Bac + 2</option>
+                                  <option value="Bac+3">Bac + 3</option>
+                                  <option value="Bac+4">Bac + 4</option>
+                                  <option value="Bac+5 ou plus">Bac + 5 ou plus</option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Le champ niveau d'études est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- experiences -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="niveau_experience">Niveau d'expérience</label>
+                            <div class="input-group has-validation">
+                              <select
+                                id="niveau_experience"
+                                formControlName="niveau_experience"
+                                [class.is-invalid]="invalidTouchedDirtyFormControl(ProfessionalInfoForm,'niveau_experience') && niveau_experience.errors?.['required']"
+                                class="form-select px-4 mb-4 rounded shadow-sm">
+                                <option value="etudiant" selected="">
+                                  Étudiant
+                                </option>
+                                <option value="diplome">
+                                    Jeune diplômé, débutant (&lt; 1 an)
+                                </option>
+                                <option value="entre_1_2">
+                                    De 1 à 2 ans
+                                </option>
+                                <option value="entre_2_4">
+                                    De 2 à 4 ans
+                                </option>
+                                <option value="entre_4_6">
+                                    De 4 à 6 ans
+                                </option>
+                                <option value="entre_7_10">
+                                    De 7 à 10 ans
+                                </option>
+                                <option value="sup_10">
+                                    Supérieur à 10 ans
+                                </option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Le champ niveau d'expérience est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- CV -->
+                        <div class="mb-3 mt-2 fw-bold">Importer votre CV</div><hr>
+                        <div class="row gx-3 mb-3">
+                          <label for="cv" class="small form-label">{{CV?'Fichier importé : '+CV.original_name:'Veuillez importer un fichier format PDF.'}}</label>
+                          <input
+                          id="cv"
+                          class="form-control"
+                          formControlName="cv"
+                          [class.is-valid]="CV"
+                          type="file"
+                          (change)="uploadCV($event)"
+                          accept="application/pdf">
+                        </div>
+
+                        <!-- Video -->
+                        <div class="mt-5 fw-bold">Importer une video presentatif</div><hr>
+                        <div class="row gx-3">
+                          <label for="video" class="small form-label">{{Video?'Video importé : '+Video.original_name:'Veuillez importer une video.'}}</label>
+                          <input
+                          id="video"
+                          class="form-control"
+                          formControlName="video"
+                          [class.is-valid]="Video"
+                          type="file"
+                          (change)="uploadVideo($event)"
+                          accept="video/*">
+                        </div>
+
+                        <!-- Sauvegarder -->
+                        <div class="d-flex justify-content-end align-items-end mt-5">
+                          <button
+                          (click)="saveProfessionalInfo()"
+                          [disabled]="ProfessionalInfoForm.invalid || competencesArray.length < 1"
+                          class="btn d-block d-sm-inline-block postule"
+                          type="button">
+                            Sauvegarder
+                          </button>
+                        </div>
+
+
+                        <!-- Les Formations -->
+                        <div class="row gx-3 mb-3 mt-5"><hr>
+                          <div class="col-md-6 mt-3 fw-bold">Formations</div>
+                          <div class="col-md-6 mt-3 d-flex justify-content-end">
+                            <button
+                            (click)="onEditFormation = false;addFormationForm.reset();"
+                            type="button"
+                            class="btn btn-success"
+                            data-bs-toggle="modal"
+                            data-bs-target="#ajouterFormation">
+                              <span><i class="fa fa-plus me-2"></i></span>
+                              Ajouter une formation
+                            </button>
+                          </div>
+                        </div>
+                        <div class="profile-content mb-5">
+                            <div class="tab-pane fade active show" id="profile-post">
+                                <ul class="timeline">
+                                  <li *ngFor="let formation of Formations" >
+                                      <div class="timeline-time">
+                                        <span class="date"></span>
+                                        <span class="time">{{getDate(formation.date_fin).getFullYear()}}</span>
+                                      </div>
+                                      <div class="timeline-icon">
+                                        <a href="javascript:;">&nbsp;</a>
+                                      </div>
+                                      <div class="card timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="userimage"><img src="assets/images/formation.jpg" alt=""></span>
+                                            <span class="formation">{{formation.nom}}</span>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <span class="fw-bold">Diplome : </span> {{formation.diplome}}
+                                            <br>
+                                            <span class="fw-bold">Eatblissement  : </span> {{formation.etablissement}}
+                                            <p>
+                                              Description de formation : {{formation.description}}
+                                            </p>
+                                        </div>
+                                        <div class="timeline-likes">
+                                            <div class="stats-right">
+                                              <span class="stats-text">de {{formation.date_debut}}</span>
+                                              <span> à </span>
+                                              <span class="stats-text">{{formation.date_fin}}</span>
+                                            </div>
+                                            <div class="stats">
+                                              <div *ngIf="formation.etat == 'en_cours'" class="badge bg-warning py-2 px-3 me-2" style="font-size: 12px;">en cours</div>
+                                              <div *ngIf="formation.etat == 'valide'" class="badge bg-success py-2 px-3 me-2" style="font-size: 12px;">validée</div>
+                                              <div *ngIf="formation.etat == 'non_valide'" class="badge bg-danger py-2 px-3 me-2" style="font-size: 12px;">non validée</div>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-comment-box px-3 py-3 d-flex justify-content-end">
+                                          <button
+                                            (click)="launchEditFormation(formation.id)"
+                                            class="btn btn-warning f-s-12 rounded-corner me-2 text-light"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#ajouterFormation"
+                                            type="button">
+                                            <span><i class="fa fa-pencil"></i></span>
+                                          </button>
+                                          <button
+                                            (click)="deleteFormation(formation.id)"
+                                            class="btn btn-danger f-s-12 rounded-corner me-2"
+                                            type="button">
+                                            <span><i class="fa fa-trash"></i></span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Les Experiences -->
+                        <hr>
+                        <div class="row gx-3 mb-3 mt-5">
+                          <div class="col-md-6 fw-bold">Experiences</div>
+                          <div class="col-md-6 d-flex justify-content-end">
+                            <button
+                            (click)="onEditExperience = false;addExperienceForm.reset();"
+                            class="btn btn-success"
+                            data-bs-toggle="modal"
+                            type="button"
+                            data-bs-target="#ajouterExperience">
+                              <span><i class="fa fa-plus me-2"></i></span>
+                              Ajouter une experience
+                            </button>
+                          </div>
+                        </div>
+                        <div class="profile-content mb-5">
+                            <div class="tab-pane fade active show" id="profile-post">
+                                <ul class="timeline">
+                                  <li *ngFor="let experience of Experiences">
+                                      <div class="timeline-time">
+                                        <span class="date"></span>
+                                        <span class="time">{{getDate(experience.date_fin).getFullYear()}}</span>
+                                      </div>
+                                      <div class="timeline-icon">
+                                        <a href="javascript:;">&nbsp;</a>
+                                      </div>
+                                      <div class="card timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="userimage"><img src="assets/images/experience.jpg" alt=""></span>
+                                            <span class="formation">Poste</span>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <span class="fw-bold">Entreprise : </span> {{experience.entreprise}}
+                                            <p>
+                                              {{experience.description}}
+                                            </p>
+                                        </div>
+                                        <div class="timeline-likes">
+                                          <div class="stats-right">
+                                            <span class="stats-text">de {{experience.date_debut}}</span>
+                                            <span> à </span>
+                                            <span class="stats-text">{{experience.date_fin}}</span>
+                                          </div>
+                                          <div class="stats">
+                                            <div *ngIf="experience.etat == 'en_cours'" class="badge bg-warning py-2 px-3 me-2" style="font-size: 12px;">en cours</div>
+                                            <div *ngIf="experience.etat == 'complete'" class="badge bg-success py-2 px-3 me-2" style="font-size: 12px;">completée</div>
+                                            <div *ngIf="experience.etat == 'non_complete'" class="badge bg-danger py-2 px-3 me-2" style="font-size: 12px;">non completée</div>
+                                          </div>
+                                        </div>
+                                        <div class="timeline-comment-box px-3 py-3 d-flex justify-content-end">
+                                          <button
+                                            (click)="launchEditExperience(experience.id)"
+                                            class="btn btn-warning f-s-12 rounded-corner me-2 text-light"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#ajouterExperience"
+                                            type="button">
+                                            <span><i class="fa fa-pencil"></i></span>
+                                          </button>
+                                          <button
+                                            (click)="deleteExperience(experience.id)"
+                                            class="btn btn-danger f-s-12 rounded-corner me-2"
+                                            type="button">
+                                            <span><i class="fa fa-trash"></i></span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Les Certification -->
+                        <hr>
+                        <div class="row gx-3 mb-3 mt-5">
+                          <div class="col-md-6 fw-bold">Certification</div>
+                          <div class="col-md-6 d-flex justify-content-end">
+                            <button
+                            (click)="onEditCertification = false;addCertificationForm.reset();"
+                            class="btn btn-success"
+                            data-bs-toggle="modal"
+                            type="button"
+                            data-bs-target="#ajouterCertification">
+                              <span><i class="fa fa-plus me-2"></i></span>
+                              Ajouter une certification
+                            </button>
+                          </div>
+                        </div>
+                        <div class="profile-content mb-5">
+                            <div class="tab-pane fade active show" id="profile-post">
+                                <ul class="timeline">
+                                  <li *ngFor="let certification of Certifications">
+                                      <div class="timeline-time">
+                                        <span class="date"></span>
+                                        <span class="time">{{getDate(certification.date_fin).getFullYear()}}</span>
+                                      </div>
+                                      <div class="timeline-icon">
+                                        <a href="javascript:;">&nbsp;</a>
+                                      </div>
+                                      <div class="card timeline-body">
+                                        <div class="timeline-header">
+                                            <span class="userimage"><img src="assets/images/certification.jpg" alt=""></span>
+                                            <span class="formation">{{certification.nom}}</span>
+                                        </div>
+                                        <div class="timeline-content">
+                                            <span class="fw-bold">Autorité  : </span> {{certification.autorite}}
+                                            <br>
+                                            <div *ngIf="certification.licence">
+                                              <span class="fw-bold" >Numéro de Licence  : </span> {{certification.licence}}
+                                            </div>
+                                            <!-- <p>
+                                              Description de certification : Lorem ipsum dolor sit amet. Nunc faucibus turpis quis tincidunt luctus.
+                                              Nam sagittis dui in nunc consequat, in imperdiet nunc sagittis.
+                                            </p> -->
+                                        </div>
+                                        <div class="timeline-likes">
+                                            <div class="stats-right">
+                                              <span class="stats-text">de {{certification.date_debut}}</span>
+                                              <span> à </span>
+                                              <span class="stats-text">{{certification.date_fin}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="timeline-comment-box px-3 py-3 d-flex justify-content-end">
+                                          <button
+                                            (click)="launchEditCertification(certification.id)"
+                                            class="btn btn-warning f-s-12 rounded-corner me-2 text-light"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#ajouterCertification"
+                                            type="button">
+                                            <span><i class="fa fa-pencil"></i></span>
+                                          </button>
+                                          <button
+                                            (click)="deleteCertification(certification.id)"
+                                            class="btn btn-danger f-s-12 rounded-corner me-2"
+                                            type="button">
+                                            <span><i class="fa fa-trash"></i></span>
+                                          </button>
+                                        </div>
+                                      </div>
+                                  </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              </div>
+              <!--  -->
+              <!-- tab4 : Paramètres de compte -->
+              <!--  -->
+              <div *ngIf="selectedTab === 4">
+                <div class="card-header text-center mb-3 fw-bold">Paramètres de compte</div>
+                <div class="card-body">
+                    <form [formGroup]="settingsForm" >
+                      <!-- Changer le mot de passe -->
+                        <div class="mb-3 fw-bold">Changer le mot de passe</div><hr>
+                        <!-- Mot de passe actuel -->
+                        <div class="row">
+                          <div class="col">
+                            <label class="form-label" for="old_password">Mot de passe actuel</label>
+                            <div class="input-group mb-3 has-validation">
+                              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-lock"></i></span>
+                              <input
+                              id="old_password"
+                              autocomplete="false"
+                              [type]="old_passwordFieldType"
+                              class="form-control input"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(settingsForm,'old_password')"
+                              formControlName="old_password">
+                              <span (click)="toggleShowOldPassword()" class="input-group-text" style="border-radius: 0px 5px 5px 0px;">
+                                <i [ngClass]="old_passwordIcon"></i>
+                              </span>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'old_password') && old_password.errors?.['required']">
+                                Le champ mot de passe actuel est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Nouveau mot de passe -->
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label class="form-label" for="new_password">Nouveau mot de passe</label>
+                            <div class="input-group mb-3 has-validation">
+                              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-lock"></i></span>
+                              <input
+                              id="new_password"
+                              autocomplete="false"
+                              [type]="new_passwordFieldType"
+                              class="form-control input"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(settingsForm,'new_password')"
+                              [class.is-valid]="!(new_password.errors?.['required'] || new_password.errors?.['pattern'])"
+                              formControlName="new_password">
+                              <span (click)="toggleShowNewPassword()" class="input-group-text" style="border-radius: 0px 5px 5px 0px;">
+                                <i [ngClass]="new_passwordIcon"></i>
+                              </span>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'new_password') && new_password.errors?.['required']">
+                                Le champ mot de passe est oblogatoire.
+                              </div>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'new_password') && new_password.errors?.['pattern']">
+                                Le mot de passe doit contenir au moins 8 caractères, des lettres minuscules et majuscules, des chiffres et des caractères spéciaux.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="repeat_new_password">Confirmer le nouveau mot de passe</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-lock"></i></span>
+                              <input
+                              style="border-radius: 0;"
+                              id="repeat_new_password"
+                              autocomplete="false"
+                              [type]="new_passwordFieldType"
+                              class="form-control input"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(settingsForm,'repeat_new_password')
+                              || ( (repeat_new_password.touched || repeat_new_password.dirty)
+                              && new_password.value !== ''
+                              && new_password.value !== repeat_new_password.value)"
+                              [class.is-valid]="!(new_password.errors?.['required'] || (new_password.value !== repeat_new_password.value))"
+                              formControlName="repeat_new_password">
+                              <span (click)="toggleShowNewPassword()" class="input-group-text" style="border-radius: 0px 5px 5px 0px;">
+                                <i [ngClass]="new_passwordIcon"></i>
+                              </span>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'repeat_new_password') && repeat_new_password.errors?.['required']">
+                                La confirmation de mot de passe est oblogatoire.
+                              </div>
+                            </div>
+                            <small class="text-danger mb-3 mt-2"
+                            *ngIf="
+                            (repeat_new_password.touched || repeat_new_password.dirty)
+                            && new_password.value !== ''
+                            && repeat_new_password.value !== ''
+                            && new_password.value !== repeat_new_password.value">
+                              La confirmation du mot de passe ne correspond pas
+                            </small>
+                          </div>
+                        </div>
+                        <!-- Changer -->
+                        <div class="d-flex justify-content-end align-items-end mt-5">
+                          <button
+                            [disabled]="settingsForm.invalid"
+                            (click)="changePassword()"
+                            class="btn d-block d-sm-inline-block postule"
+                            type="button">
+                            Changer
+                          </button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+</div>
+<div class="m-5" style="height: 50px;">
+</div>
+<app-footer></app-footer>
+
+<!-- -------------------------------------------------------------------- -->
+<!-- ajouter formation modal -->
+<!-- -------------------------------------------------------------------- -->
+<div class="modal fade" id="ajouterFormation" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">{{ onEditFormation == true ? "Modifier" : "Ajouter"}} une formation</h1>
+        <button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addFormationForm">
+          <div class="modal-body">
+            <!-- Periode de formation -->
+            <div class="row mb-3">
+              <label class="control-label mb-2">Periode de formation</label>
+              <!-- date debut -->
+              <div class="col-md-6">
+                 <label class="small form-label" for="date_debut">Date début <span style="color: #f00">*</span></label>
+                 <div class="input-group has-validation">
+                   <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                   <input
+                   id="date_debut"
+                   type="date"
+                   maxlength="255"
+                   class="form-control"
+                   [class.is-invalid]="invalidTouchedDirtyFormControl(addFormationForm,'date_debut') && date_debut_formation.errors?.['required']"
+                   formControlName="date_debut">
+                   <div class="invalid-feedback">
+                     Le champ date début est oblogatoire.
+                   </div>
+                 </div>
+              </div>
+              <!-- date fin -->
+              <div class="col-md-6">
+                  <label class="small form-label" for="date_fin">Date fin <span style="color: #f00">*</span></label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                    <input
+                    id="date_fin"
+                    type="date"
+                    maxlength="255"
+                    class="form-control"
+                    [class.is-invalid]="invalidTouchedDirtyFormControl(addFormationForm,'date_fin') && date_fin_formation.errors?.['required']"
+                    formControlName="date_fin">
+                    <div class="invalid-feedback">
+                      Le champ date fin est oblogatoire.
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!--  Nom de la formation -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                  <div class="form-group">
+                      <label class="control-label mb-2"> Nom de la formation <span style="color: #f00">*</span></label>
+                      <input
+                      id="nom"
+                      type="text"
+                      autocomplete="off"
+                      formControlName="nom"
+                      placeholder="Quelle formation avez-vous reçu ?"
+                      [class.is-invalid]="invalidTouchedDirtyFormControl(addFormationForm,'nom') && nom_formation.errors?.['required']"
+                      class="form-control">
+                  </div>
+                </div>
+            </div>
+            <!-- Diplôme Obtenu -->
+            <div class="row mb-3">
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label mb-2">Diplôme Obtenu <span style="color: #f00">*</span></label>
+                    <input
+                    id="diplome"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="diplome"
+                    placeholder="Quel diplôme avez vous obtenu ?"
+                    [class.is-invalid]="invalidTouchedDirtyFormControl(addFormationForm,'diplome') && diplome.errors?.['required']"
+                    class="form-control">
+                  </div>
+              </div>
+            </div>
+            <!-- État de la formation -->
+            <div class="row mb-3">
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label mb-2">État de la formation <span style="color: #f00">*</span></label>
+                    <div class="form-check">
+                        <input
+                        type="radio"
+                        class="form-check-input"
+                        value="en_cours"
+                        id="radioencours_formation"
+                        formControlName="etat"
+                        name="etat">
+                        <label class="form-control-label ms-3" for="radioencours_formation">En cours</label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                        type="radio"
+                        class="form-check-input"
+                        value="valide"
+                        id="radiovalide_formation"
+                        name="etat"
+                        formControlName="etat"
+                        checked="">
+                        <label class="form-control-label ms-3" for="radiovalide_formation">Validée</label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                        type="radio"
+                        class="form-check-input"
+                        value="non_valide"
+                        id="radiononvalide_formation"
+                        formControlName="etat"
+                        name="etat">
+                        <label class="form-control-label ms-3" for="radiononvalide_formation">Non validée</label>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <!-- Établissement et Description de Formation -->
+            <div class="row mb-3">
+              <!-- Établissement de Formation -->
+              <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label class="control-label mb-2">Établissement de Formation <span style="color: #f00">*</span></label>
+                    <input
+                    id="etablissement"
+                    type="text"
+                    autocomplete="off"
+                    formControlName="etablissement"
+                    placeholder="Où avez-vous reçu la formation ?"
+                    [class.is-invalid]="invalidTouchedDirtyFormControl(addFormationForm,'etablissement') && etablissement.errors?.['required']"
+                    class="form-control">
+                  </div>
+              </div>
+              <!-- Description de la formation -->
+              <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label mb-2">Description de la formation (facultatif)</label>
+                    <textarea
+                    id="description"
+                    class="form-control"
+                    formControlName="description"
+                    placeholder="tapez ici ..."
+                    [class.is-invalid]="invalidTouchedDirtyFormControl(addFormationForm,'description') && description_formation.errors?.['required']"
+                    rows="2"></textarea>
+                  </div>
+              </div>
+            </div>
+         </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-end">
+        <button type="button" id="closeModal" class="btn btn-light" data-bs-dismiss="modal">
+          Retour
+        </button>
+        <button
+          *ngIf="!onEditFormation"
+          (click)="addFormation()"
+          [disabled]="addFormationForm.invalid"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-success">
+          Ajouter
+        </button>
+        <button
+          *ngIf="onEditFormation"
+          (click)="editFormation()"
+          [disabled]="addFormationForm.invalid"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-success">
+          Sauvegarder
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- -------------------------------------------------------------------- -->
+<!-- ajouter experience modal -->
+<!-- -------------------------------------------------------------------- -->
+<div class="modal fade" id="ajouterExperience" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">{{ onEditExperience == true ? "Modifier" : "Ajouter"}} une experience</h1>
+        <button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addExperienceForm">
+          <div class="modal-body">
+            <!-- Periode d'experience -->
+            <div class="row mb-3">
+              <label class="control-label mb-2">Periode d'experience</label>
+              <!-- date debut -->
+              <div class="col-md-6">
+                 <label class="small form-label" for="date_debut">Date début <span style="color: #f00">*</span></label>
+                 <div class="input-group has-validation">
+                   <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                   <input
+                   id="date_debut"
+                   type="date"
+                   maxlength="255"
+                   class="form-control"
+                   [class.is-invalid]="invalidTouchedDirtyFormControl(addExperienceForm,'date_debut') && date_debut_experience.errors?.['required']"
+                   formControlName="date_debut">
+                   <div class="invalid-feedback">
+                     Le champ date début est oblogatoire.
+                   </div>
+                 </div>
+              </div>
+              <!-- date fin -->
+              <div class="col-md-6">
+                  <label class="small form-label" for="date_fin">Date fin <span style="color: #f00">*</span></label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                    <input
+                    id="date_fin"
+                    type="date"
+                    maxlength="255"
+                    class="form-control"
+                    [class.is-invalid]="invalidTouchedDirtyFormControl(addExperienceForm,'date_fin') && date_fin_experience.errors?.['required']"
+                    formControlName="date_fin">
+                    <div class="invalid-feedback">
+                      Le champ date de fin est oblogatoire.
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- Poste -->
+            <div class="row mb-3">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <label class="control-label mb-2"> Poste <span style="color: #f00">*</span></label>
+                     <input
+                     id="poste"
+                     type="text"
+                     formControlName="poste"
+                     autocomplete="off"
+                     placeholder="Libellé du poste occupé"
+                     [class.is-invalid]="invalidTouchedDirtyFormControl(addExperienceForm,'poste') && poste.errors?.['required']"
+                     class="form-control">
+                  </div>
+               </div>
+            </div>
+            <!-- Entreprise -->
+            <div class="row mb-3">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <label class="control-label mb-2">Entreprise <span style="color: #f00">*</span></label>
+                     <input
+                     id="entreprise"
+                     type="text"
+                     formControlName="entreprise"
+                     autocomplete="off"
+                     placeholder="L'entreprise où vous avez acquis cette expérience "
+                     [class.is-invalid]="invalidTouchedDirtyFormControl(addExperienceForm,'entreprise') && entreprise.errors?.['required']"
+                     class="form-control">
+                  </div>
+               </div>
+            </div>
+            <!-- État de l'experience -->
+            <div class="row mb-3">
+              <div class="col-md-12">
+                 <div class="form-group">
+                    <label class="control-label mb-2">État de l'experience <span style="color: #f00">*</span></label>
+                    <div class="custom-control custom-radio">
+                       <input
+                       id="radiovalide_experience"
+                       type="radio"
+                       class="form-check-input"
+                       value="complete"
+                       formControlName="etat"
+                       name="etat"
+                       checked="">
+                       <label class="form-control-label ms-3" for="radiovalide_experience">Completé</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                       <input
+                       id="radioencours_experience"
+                       type="radio"
+                       class="form-check-input"
+                       value="en_cours"
+                       formControlName="etat"
+                       name="etat">
+                       <label class="form-control-label ms-3" for="radioencours_experience">En cours</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                       <input
+                       id="radiononvalide_experience"
+                       type="radio"
+                       class="form-check-input"
+                       value="non_complete"
+                       formControlName="etat"
+                       name="etat">
+                       <label class="form-control-label ms-3" for="radiononvalide_experience">Non Completé</label>
+                    </div>
+                 </div>
+              </div>
+            </div>
+            <!-- Description de l'experience -->
+            <div class="row mb-3">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <label class="control-label mb-2">Description de l'experience (facultatif)</label>
+                     <textarea
+                     id="description_experience"
+                     type="text"
+                     formControlName="description"
+                     autocomplete="off"
+                     placeholder="tapez ici ..."
+                     class="form-control"></textarea>
+                  </div>
+               </div>
+            </div>
+         </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-end">
+        <button type="button" id="closeModal" class="btn btn-light" data-bs-dismiss="modal">
+          Retour
+        </button>
+        <button
+          *ngIf="!onEditExperience"
+          (click)="addExperience()"
+          [disabled]="addExperienceForm.invalid"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-success">
+          Ajouter
+        </button>
+        <button
+          *ngIf="onEditExperience"
+          (click)="editExperience()"
+          [disabled]="addExperienceForm.invalid"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-success">
+          Sauvegarder
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- -------------------------------------------------------------------- -->
+<!-- ajouter certification modal -->
+<!-- -------------------------------------------------------------------- -->
+<div class="modal fade" id="ajouterCertification" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5">{{ onEditCertification == true ? "Modifier" : "Ajouter"}} une certification</h1>
+        <button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addCertificationForm">
+          <div class="modal-body">
+            <!-- Periode de certification -->
+            <div class="row mb-3">
+              <!-- date debut -->
+              <label class="control-label mb-2">Periode de certification</label>
+              <div class="col-md-6">
+                <label class="small form-label" for="date_debut">Date début <span style="color: #f00">*</span></label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  <input
+                  id="date_debut_certification"
+                  type="date"
+                  maxlength="255"
+                  class="form-control"
+                  [class.is-invalid]="invalidTouchedDirtyFormControl(addCertificationForm,'date_debut') && date_debut_certification.errors?.['required']"
+                  formControlName="date_debut">
+                  <div class="invalid-feedback">
+                    Le champ date de debut est oblogatoire.
+                  </div>
+                </div>
+              </div>
+              <!-- date fin -->
+              <div class="col-md-6">
+                <label class="small form-label" for="date_fin">Date fin <span style="color: #f00">*</span></label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                  <input
+                  id="date_fin_certification"
+                  type="date"
+                  maxlength="255"
+                  class="form-control"
+                  [class.is-invalid]="invalidTouchedDirtyFormControl(addCertificationForm,'date_fin') && date_fin_certification.errors?.['required']"
+                  formControlName="date_fin">
+                  <div class="invalid-feedback">
+                    Le champ date de naissance est oblogatoire.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Nom de la certification -->
+            <div class="row mb-3">
+               <div class="col-md-12">
+                  <div class="form-group">
+                     <label class="control-label mb-2"> Nom de la Certification <span style="color: #f00">*</span></label>
+                     <input
+                     id="nom_certification"
+                     type="text"
+                     autocomplete="off"
+                     formControlName="nom"
+                     placeholder="Quelle certification avez-vous reçu ?"
+                     [class.is-invalid]="invalidTouchedDirtyFormControl(addCertificationForm,'nom') && nom_certification.errors?.['required']"
+                     class="form-control">
+                  </div>
+               </div>
+            </div>
+            <!-- Autorité de certification -->
+            <div class="row mb-3">
+               <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label mb-2">Autorité de certification <span style="color: #f00">*</span></label>
+                    <input
+                    id="autorite"
+                    type="text"
+                    formControlName="autorite"
+                    autocomplete="off"
+                    placeholder="Quelle autorité vous a certifié ?"
+                    [class.is-invalid]="invalidTouchedDirtyFormControl(addCertificationForm,'autorite') && autorite.errors?.['required']"
+                    class="form-control">
+                  </div>
+               </div>
+            </div>
+            <!-- Numéro de Licence -->
+            <div class="row mb-3">
+               <div class="col-md-12">
+                  <div class="form-group">
+                    <label class="control-label mb-2">Numéro de Licence (facultatif)</label>
+                    <input
+                    id="licence"
+                    type="text"
+                    class="form-control"
+                    formControlName="licence">
+                  </div>
+               </div>
+            </div>
+         </div>
+        </form>
+      </div>
+      <div class="modal-footer d-flex justify-content-end">
+        <button type="button" id="closeModal" class="btn btn-light" data-bs-dismiss="modal">
+          Retour
+        </button>
+        <button
+          *ngIf="!onEditCertification"
+          (click)="addCertification()"
+          [disabled]="addCertificationForm.invalid"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-success">
+          Ajouter
+        </button>
+        <button
+          *ngIf="onEditCertification"
+          (click)="editCertification()"
+          [disabled]="addCertificationForm.invalid"
+          data-bs-dismiss="modal"
+          type="button"
+          class="btn btn-success">
+          Sauvegarder
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- toast -->
+<div class="toast" style="position: fixed; top: 15px; right: 20px;z-index: 1000;">
+  <div class="toast-header">
+    <span>
+      <i *ngIf="toast_status=='warning'" class="fa fa-warning text-warning fw-bold me-2"></i>
+      <i *ngIf="toast_status=='danger'" class="fa fa-times text-danger fw-bold me-2"></i>
+      <i *ngIf="toast_status=='success'" class="fa fa-check text-success fw-bold me-2"></i>
+    </span>
+    <strong class="me-auto">{{toast_header}}</strong>
+    <small class="text-muted">maintenant</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    {{toast_message}}
+  </div>
+</div>

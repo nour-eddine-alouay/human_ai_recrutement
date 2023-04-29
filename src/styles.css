@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+  --violent-violet: #2b0c63;
+  --mantis: #8bce57;
+  --laser: #f0e9fc;
+  --river-bed: #4e5d64;
+  --pale-sky: #6c707a;
+  --thunder: #2a1c26;
+  --kimberly: #7876a5;
+  --eggplant: #52394f;
+  --persian-indigo: #2d1184;
+}
+
+.form-control:focus{
+  border-color: var(--kimberly);
+  box-shadow: none !important;
+}
+mat-dialog-container {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 530px !important;
+  height: 250px !important;
+}

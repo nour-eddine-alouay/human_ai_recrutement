@@ -1,0 +1,133 @@
+<nav id="nav1" class="navbar navbar-expand-lg p-0">
+  <div class="container px-0">
+      <a class="navbar-brand fw-bold" href="#!"><img src="../../../assets/images/nav-logo.jpeg" class="logo" alt="" /></a>
+      <div>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><button routerLink="/" class="btn home mx-2">Home</button></li>
+            <li class="nav-item"><button routerLink="/register" class="btn inscription mx-2">S'inscrire</button></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+      <div class="h-100">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/login">Offres d’emploi</a></li>
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/login">Actualités</a></li>
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/contact">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<div style="background-color:#F5F2F9">
+  <div class="row align-items-center justify-content-center mb-4 pb-5 mx-5">
+    <div class="col p-3 my-5">
+      <div class="illustration w-75 m-auto">
+          <img class="w-100" src="/assets/images/africa.png">
+      </div>
+    </div>
+    <div class="col col-lg-5 align-items-center">
+      <div class="card card-4 shadow p-3 my-5 bg-body rounded">
+        <div class="card-body">
+          <h2 class="title text-center py-2">Se connecter</h2>
+          <div *ngIf="isAlertMessage" class="alert alert-{{typeAlertMessage}} text-center py-2" role="alert">
+            {{alertMessage}}
+          </div>
+          <form [formGroup]="loginForm">
+            <!-- Email input -->
+            <label class="form-label" for="email">Email</label>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-envelope"></i></span>
+              <input
+              id="email"
+              type="email"
+              class="form-control"
+              [class.is-invalid]="invalidTouchedDirtyFormControl('email')"
+              formControlName="email">
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl('email') && email.errors?.['required']">
+                Le champ email est oblogatoire.
+              </div>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl('email') && email.errors?.['email']">
+                Le champ email est invalide.
+              </div>
+            </div>
+
+            <label class="form-label" for="password">Mot de passe</label>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="passwordPrepend"><i class="fa fa-lock"></i></span>
+              <input
+              id="password"
+              autocomplete="false"
+              [type]="passwordFieldType"
+              aria-describedby="passwordPrepend"
+              class="form-control input"
+              [class.is-invalid]="invalidTouchedDirtyFormControl('password')"
+              formControlName="password">
+              <span (click)="toggleShowPassword()" class="input-group-text"><i [ngClass]="passwordIcon"></i></span>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl('password') && password.errors?.['required']">
+                Le champ mot de passe est oblogatoire.
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <!-- <div class="row">
+              <div class="text-center col">
+                <button
+                  routerLink="/candidat/profil"
+                  type="submit"
+                  class="btn inscription mx-2"
+                >candidat
+                </button>
+              </div>
+              <div class="text-center col">
+                <button
+                  routerLink="/recruteur/profil"
+                  type="submit"
+                  class="btn inscription mx-2"
+                >recruteur
+                </button>
+              </div>
+            </div> -->
+            <div class="text-center">
+              <button
+                (click)="login()"
+                type="submit"
+                class="btn inscription mx-2"
+              >Se connecter
+              </button>
+            </div>
+            
+
+
+            <div class="text-center">
+              <div class="my-4">
+                Vous avez oublier votre mot de passe <span class="link" routerLink="/forgot">Récuperer</span>
+              </div>
+            </div>
+
+            
+            <!-- login buttons -->
+            <div class="text-center">
+              <p class="my-4">Ou se connecter en utilisant</p>
+              <button type="button" class="btn mx-1 facebook">
+                <i class="fa fa-facebook-f"></i>
+              </button>
+              <button type="button" class="btn mx-1 google">
+                <i class="fa fa-google"></i>
+              </button>
+            </div>
+            <!-- have already an account -->
+            <div class="text-center">
+              <div class="my-4">
+                Vous n'avez pas un compte ? <span class="link" routerLink="/register">Créer un compte</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

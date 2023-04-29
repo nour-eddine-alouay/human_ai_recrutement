@@ -1,0 +1,707 @@
+<app-navbar-recruteur></app-navbar-recruteur>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mqb-lg-0 h-100">
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/recruteur/profils">Profils</a></li>
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/recruteur/actualites">Actualités</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="px-0 py-5 bg-light d-flex justify-content-center">
+  <section id="content" class="container mx-0 px-0">
+    <div class="row">
+        <div class="col-md-4">
+          <!-- Profile Entreprise -->
+          <div *ngIf="selectedTab == 1 || selectedTab == 2 || selectedTab == 4" class="panel mb-4">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-building"></i>
+              </span>
+              <span class="panel-title"> Entreprise </span>
+            </div>
+            <div class="panel-body text-center">
+                <!-- Profile picture image-->
+                <img class="img-account-profile rounded-circle mb-2 w-50"
+                [src]="entreprisePhoto?entreprise_photo_src:'../../../assets/images/default_profil/default_entreprise.png'">
+                <div class="mt-3">
+                  <h4 class="fw-bold">{{EntrepriseInfo?.nom?EntrepriseInfo.nom:''}}</h4>
+                  <p class="mb-1">{{domaine_name}}</p>
+                  <p class="text-muted font-size-sm">{{EntrepriseInfo?.slogan?EntrepriseInfo.slogan:''}}</p>
+                </div>
+                <small class="text-secondary small">( Autorisé JPG, GIF or PNG. Max est 3MB )</small>
+                <div class="mx-3 mt-3">
+                  <button class="btn btn-sm btn-success btn-upload">
+                    Uploader une photo
+                    <input
+                      id="photo"
+                      class="account-settings-fileinput"
+                      type="file"
+                      (change)="uploadPhoto($event,'entreprise')"
+                      accept="image/jpeg, image/gif, image/png"
+                      asize="4000000">
+                  </button>
+                  <a routerLink="/recruteur/mon-profil" class="btn btn-sm btn-outline-dark mx-2" type="button">
+                    Aperçu
+                    <span><i class="fa fa-external-link ms-2"></i></span>
+                  </a>
+                </div>
+            </div>
+          </div>
+          <!-- Profile representant d'ntreprise -->
+          <div *ngIf="selectedTab == 3" class="panel mb-4">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-user"></i>
+              </span>
+              <span class="panel-title"> Représentant d'Entreprise </span>
+            </div>
+            <div class="panel-body text-center">
+                <!-- Profile picture image-->
+                <img
+                class="img-account-profile rounded-circle mb-2 w-50"
+                [src]="representantPhoto?representant_photo_src:'../../../assets/images/default_profil/monsieur.jpg'"
+                alt="photo de profil">
+                <div class="mt-3">
+                  <h4>Nom Prénom</h4>
+                  <p class="text-secondary mb-1">poste</p>
+                </div>
+                <small class="text-secondary small">( Autorisé JPG, GIF or PNG. Max est 3MB )</small>
+                <div class="mx-3 mt-3">
+                  <button class="btn btn-sm btn-success btn-upload">
+                    Uploader une photo
+                    <input
+                      id="photo"
+                      class="account-settings-fileinput"
+                      type="file"
+                      (change)="uploadPhoto($event,'representant')"
+                      accept="image/jpeg, image/gif, image/png"
+                      asize="4000000">
+                  </button>
+                </div>
+            </div>
+          </div>
+          <!-- Valeurs -->
+          <div class="panel">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-star"></i>
+              </span>
+              <span class="panel-title"> Valeurs </span>
+            </div>
+            <div class="panel-body">
+              <span *ngFor="let val_des of valeurs_descriptions, let index=index">
+                <span
+                  *ngIf="val_des.star"
+                  class="badge bg-warning mx-1 py-1">
+                  {{val_des.valeur}}
+                </span>
+              </span>
+            </div>
+          </div>
+          <!-- Etat de profil -->
+          <div class="panel">
+            <div class="panel-heading">
+              <span class="panel-icon">
+                <i class="fa fa-star"></i>
+              </span>
+              <span class="panel-title"> Etat de profil</span>
+            </div>
+            <div class="panel-body pn">
+              <table class="table mbn tc-icon-1 tc-med-2 tc-bold-last">
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="fa fa-building text-danger"></span>
+                    </td>
+                    <td>Entreprise</td>
+                    <td>
+                      <span *ngIf="EntrepriseInfo?.isCompleted" class="badge bg-success">completé</span>
+                      <span *ngIf="!EntrepriseInfo?.isCompleted" class="badge bg-danger">non completé</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-user text-info"></span>
+                    </td>
+                    <td>Représentant</td>
+                    <td>
+                      <span *ngIf="AdminInfo?.isCompleted" class="badge bg-success">completé</span>
+                      <span *ngIf="!AdminInfo?.isCompleted" class="badge bg-danger">non completé</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-file-video-o  text-primary"></span>
+                    </td>
+                    <td>Video</td>
+                    <td>
+                      <span *ngIf="Video" class="badge bg-success">importé</span>
+                      <span *ngIf="!Video" class="badge bg-danger">non importé</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="fa fa-star text-warning"></span>
+                    </td>
+                    <td>Valuers Humaines</td>
+                    <td>
+                      <span *ngIf="isValeursHumainesCompleted" class="badge bg-success">completé</span>
+                      <span *ngIf="!isValeursHumainesCompleted" class="badge bg-danger">non completé</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="tab-block">
+            <ul class="nav nav-tabs mb-2" id="nav-tab" role="tablist">
+              <li [class.active]="selectedTab == 1" (click)="selectedTab = 1">
+                <button [class.active]="selectedTab == 1" class="nav-link" type="button">
+                  Entreprise
+                  <span class="panel-icon"><i class="fa fa-building text-primary"></i></span>
+                </button>
+              </li>
+              <li [class.active]="selectedTab == 2" (click)="selectedTab = 2">
+                <button [class.active]="selectedTab == 2" class="nav-link" type="button">
+                  Valeurs
+                  <span class="panel-icon"><i class="fa fa-star text-warning"></i></span>
+                </button>
+              </li>
+              <li [class.active]="selectedTab == 3" (click)="selectedTab = 3">
+                <button [class.active]="selectedTab == 3" class="nav-link" type="button">
+                  Représentant
+                  <span class="panel-icon"><i class="fa fa-user text-info"></i></span>
+                </button>
+              </li>
+              <li [class.active]="selectedTab == 4" (click)="selectedTab = 4">
+                <button [class.active]="selectedTab == 4" class="nav-link" type="button">
+                  Paramètres
+                  <span class="panel-icon"><i class="fa fa-gear text-danger"></i></span>
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content p30">
+              <!--  -->
+              <!-- tab1 : Entreprise -->
+              <!--  -->
+              <div *ngIf="selectedTab === 1">
+                <div class="card-header text-center mb-3 fw-bold">Les données d'entreprise</div>
+                <div class="card-body">
+                    <form [formGroup]="entrepriseForm">
+                        <!-- nom d'entreprise -->
+                        <div class="row gx-3 mb-3">
+                          <label class="form-label" for="nom">Nom d'entreprise</label>
+                          <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fa fa-building-o"></i></span>
+                            <input
+                            id="nom"
+                            type="text"
+                            maxlength="255"
+                            class="form-control"
+                            [class.is-invalid]="invalidTouchedDirtyFormControl(entrepriseForm,'nom') && nom_entreprise.errors?.['required']"
+                            formControlName="nom">
+                            <div class="invalid-feedback">
+                              Le champ nom est oblogatoire.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-3 fw-bold">Domaine d'activité</div><hr>
+                        <!-- domaine et type -->
+                        <div class="row gx-3 mb-3">
+                          <!-- domaine -->
+                          <div class="col-md-6">
+                            <label class="form-label" for="domaine">Domaine d'activié</label>
+                            <div class="input-group has-validation">
+                              <select
+                              id="domaine"
+                              formControlName="domaine"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(entrepriseForm,'domaine') && domaine.errors?.['required']"
+                              class="form-select px-4 rounded shadow-sm">
+                                &gt;
+                                <option disabled="">Choisir votre domaine</option>
+                                <option
+                                *ngFor="let domaine of domaines"
+                                value="{{domaine.value}}">
+                                    {{domaine.name}}
+                                </option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Le champ domaine d'activié est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Type -->
+                          <div class="col-md-6">
+                            <label class="form-label" for="site">Type d'entreprise</label>
+                            <div class="input-group has-validation">
+                              <select
+                              id="type"
+                              formControlName="type"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(entrepriseForm,'type') && type.errors?.['required']"
+                              class="form-select px-4 rounded shadow-sm">
+                                &gt;
+                                <option disabled="">choisir le type d'entreprise</option>
+                                <option value="Grande_entreprise">
+                                    Grande Entreprise (1052)
+                                </option>
+                                <option value="pme">
+                                    PME (494)
+                                </option>
+                                <option selected="selected" value="Start_up">
+                                    Start-up (267)
+                                </option>
+                                <option value="association_institution-publique_laboratoire">
+                                    Association / Institution publique / Laboratoire (54)
+                                </option>
+                                <option value="collectifs">
+                                    Collectifs (1)
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mb-3 fw-bold">À propos</div><hr>
+                        <!-- aperçu d'entreprise -->
+                        <div class="row gx-3 mb-3">
+                          <label class="small form-label" for="apercu">Rédigez un aperçu professionnel (à propos d'entreprise)</label>
+                          <div class="input-group has-validation">
+                            <textarea
+                              id="apercu"
+                              type="text"
+                              placeholder="Ecrivez ici ..."
+                              rows="6"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(entrepriseForm,'apercu') && apercu.errors?.['required']"
+                              formControlName="apercu"></textarea>
+                            <div class="invalid-feedback">
+                              Le champ apercu d'entreprise est oblogatoire.
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row gx-3 mb-3">
+                          <!-- slogan -->
+                          <label class="small form-label" for="slogan">Slogan</label>
+                          <div class="input-group has-validation">
+                            <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-hashtag"></i></span>
+                            <input
+                            id="slogan"
+                            type="text"
+                            maxlength="255"
+                            class="form-control"
+                            formControlName="slogan">
+                          </div>
+                        </div>
+
+                        <div class="mt-5 fw-bold">Importer une video presentatif sur l'entreprise.</div><hr>
+                        <div class="row gx-3 mb-3">
+                          <label for="video" class="small form-label">{{Video?'Video importé : '+Video.original_name:'Veuillez importer une video.'}}</label>
+                          <input
+                          id="video"
+                          class="form-control"
+                          formControlName="video"
+                          [class.is-valid]="Video"
+                          type="file"
+                          (change)="uploadVideo($event)"
+                          accept="video/*">
+                        </div>
+
+                        <!-- pays et ville -->
+                        <div class="mb-3 fw-bold">Adresse</div><hr>
+                        <div class="row gx-3 mb-1">
+                          <!-- pays -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="pays">Pays</label>
+                            <div class="input-group has-validation">
+                              <select
+                                id="pays"
+                                formControlName="pays"
+                                [class.is-invalid]="invalidTouchedDirtyFormControl(entrepriseForm,'pays') && pays.errors?.['required']"
+                                class="form-select ps-3 mb-4 rounded shadow-sm" >
+                                <option disabled=""> Sélectionnez votre pays</option>
+                                <option *ngFor="let pays of paysList"
+                                  [selected]="pays.code === 'MA'"
+                                  [value]="pays.code">
+                                    {{pays.name}}
+                                </option>
+                              </select>
+                              <div class="invalid-feedback">
+                                Le champ pays est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- adresse -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="adresse">Adresse</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+                              <input
+                              id="adresse"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(entrepriseForm,'adresse') && adresse.errors?.['required']"
+                              formControlName="adresse">
+                              <div class="invalid-feedback">
+                                Le champ adresse est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+                          <div class="mb-3 fw-bold">Site web</div><hr>
+                          <!-- Site -->
+                          <div class="col">
+                            <label class="small form-label" for="site">Site (URL)</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+                              <input
+                              id="site"
+                              type="text"
+                              placeholder="Site officiel d'entreprise"
+                              maxlength="255"
+                              class="form-control"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(entrepriseForm,'site') && site.errors?.['required']"
+                              formControlName="site">
+                              <div class="invalid-feedback">
+                                Le champ site professionnel est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Sauvegarder -->
+                        <div class="d-flex justify-content-end align-items-end mt-5">
+                          <button
+                          class="btn d-block d-sm-inline-block postule"
+                          type="button"
+                          [disabled]="entrepriseForm.invalid"
+                          (click)="saveEntrepriseInfo()">
+                            Sauvegarder
+                          </button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+              <!--  -->
+              <!-- tab2 : Les valeurs humaines -->
+              <!--  -->
+              <div *ngIf="selectedTab === 2">
+                <div class="card-header text-center mb-3 fw-bold">Mes valeurs humaines</div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12 px-0">
+                      <div class="card">
+                        <div class="table-responsive">
+                          <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                            <tbody>
+                                <ng-container *ngFor="let val_des of valeurs_descriptions, let index=index">
+                                  <tr *ngIf="index>=minVal && index<maxVal">
+                                      <td class="text-center">
+                                        <i (click)="toggleValeurHumaine(index)" [ngClass]="{'fa-star star': val_des.star, 'fa-star-o star-none': !val_des.star}" class="fa"></i>
+                                      </td>
+                                      <td><span class="mb-0 text-dark">{{val_des.valeur}}</span></td>
+                                      <td>
+                                        <span class="text-muted" *ngIf="!val_des.isExpanded" >{{firstNWordOfString(val_des.description,3)}}...</span>
+                                        <span class="text-muted" *ngIf="val_des.isExpanded">{{val_des.description}}</span>
+                                      </td>
+                                      <td><i class="fa fa-bars text-muted value-details" (click)="val_des.isExpanded = !val_des.isExpanded"></i></td>
+                                  </tr>
+                                </ng-container>
+                            </tbody>
+                          </table>
+                        </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <ul class="pagination mt-3 mb-0">
+                            <li [class.disabled]="minVal==0" class="page-item"><button (click)="minVal=minVal-15;maxVal=maxVal-15" class="page-link">‹</button></li>
+                            <li [class.active]="minVal==0&&maxVal==15" class="active page-item"><button (click)="minVal=0;maxVal=15" class="page-link">1</button></li>
+                            <li [class.active]="minVal==15&&maxVal==30" class="page-item"><button (click)="minVal=15;maxVal=30" class="page-link">2</button></li>
+                            <li [class.active]="minVal==30&&maxVal==45" class="page-item"><button (click)="minVal=30;maxVal=45" class="page-link">3</button></li>
+                            <li [class.disabled]="maxVal==45" class="page-item"><button (click)="minVal=minVal+15;maxVal=maxVal+15" class="page-link">›</button></li>
+                          </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--  -->
+              <!-- tab3 : Représentant -->
+              <!--  -->
+              <div *ngIf="selectedTab === 3">
+                <div class="card-header text-center mb-3 fw-bold">Données de Représentant</div>
+                <div class="card-body">
+                    <form [formGroup]="adminForm">
+                        <div class="mb-3 fw-bold">Données d'identité</div><hr>
+                        <!-- nom et prenom -->
+                        <div class="row gx-3 mb-3">
+                          <!-- nom -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="nom">Nom</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              <input
+                              id="nom"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              placeholder="nom"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(adminForm,'nom') && nom_admin.errors?.['required']"
+                              formControlName="nom">
+                              <div class="invalid-feedback">
+                                Le champ nom est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- prenom -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="prenom">Prenom</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              <input
+                              id="prenom"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              placeholder="prenom"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(adminForm,'prenom') && prenom.errors?.['required']"
+                              formControlName="prenom">
+                              <div class="invalid-feedback">
+                                Le champ prenom est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- telephone et date naissance -->
+                        <div class="row gx-3 mb-3">
+                          <!-- Poste -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="poste">Poste</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-briefcase"></i></span>
+                              <input
+                              id="poste"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              placeholder="votre poste dans l'entreprise"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(adminForm,'poste') && poste.errors?.['required']"
+                              formControlName="poste">
+                              <div class="invalid-feedback">
+                                Le champ poste est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Contact -->
+                        <div class="mb-3 fw-bold">Données de contact</div><hr>
+                        <div class="row gx-3 mb-3">
+                          <!-- telephone -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="telephone">Telephone</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                              <input
+                              id="telephone"
+                              type="tel"
+                              maxlength="255"
+                              class="form-control"
+                              placeholder="numéro de telephone mobile"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(adminForm,'telephone') && telephone.errors?.['required']"
+                              formControlName="telephone">
+                              <div class="invalid-feedback">
+                                Le champ telephone est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                          <!-- email_contact -->
+                          <div class="col-md-6">
+                            <label class="small form-label" for="email_contact">Boite email de contact</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-envelope-open"></i></span>
+                              <input
+                              id="email_contact"
+                              type="tel"
+                              maxlength="255"
+                              class="form-control"
+                              placeholder="adresse de boite email de contact"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(adminForm,'email_contact') && email_contact.errors?.['required']"
+                              formControlName="email_contact">
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(adminForm,'email_contact') && email_contact.errors?.['required']">
+                                Le champ email est oblogatoire.
+                              </div>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(adminForm,'email_contact') && email_contact.errors?.['email']">
+                                Le champ email est invalide.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row gx-3 mb-3">
+                          <div class="col-md-6">
+                            <label class="small form-label" for="linkedin">LinkedIn (URL)</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text"><i class="fa fa-linkedin"></i></span>
+                              <input
+                              id="linkedin"
+                              type="text"
+                              maxlength="255"
+                              class="form-control"
+                              placeholder="linkedin"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(adminForm,'linkedin') && linkedin.errors?.['required']"
+                              formControlName="linkedin">
+                              <div class="invalid-feedback">
+                                Le champ linkedin est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Sauvegarder -->
+                        <div class="d-flex justify-content-end align-items-end mt-5">
+                          <button
+                          class="btn d-block d-sm-inline-block postule"
+                          type="button"
+                          [disabled]="adminForm.invalid"
+                          (click)="saveAdminInfo()">
+                            Sauvegarder
+                          </button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+              <!--  -->
+              <!-- tab4 : Paramètres de compte -->
+              <!--  -->
+              <div *ngIf="selectedTab === 4">
+                <div class="card-header text-center mb-3 fw-bold">Paramètres de compte</div>
+                <div class="card-body">
+                    <form [formGroup]="settingsForm" >
+                      <!-- Changer le mot de passe -->
+                        <div class="mb-3 fw-bold">Changer le mot de passe</div><hr>
+                        <!-- Mot de passe actuel -->
+                        <div class="row">
+                          <div class="col">
+                            <label class="form-label" for="old_password">Mot de passe actuel</label>
+                            <div class="input-group mb-3 has-validation">
+                              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-lock"></i></span>
+                              <input
+                              id="old_password"
+                              autocomplete="false"
+                              [type]="old_passwordFieldType"
+                              class="form-control input"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(settingsForm,'old_password')"
+                              formControlName="old_password">
+                              <span (click)="toggleShowOldPassword()" class="input-group-text" style="border-radius: 0px 5px 5px 0px;">
+                                <i [ngClass]="old_passwordIcon"></i>
+                              </span>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'old_password') && old_password.errors?.['required']">
+                                Le champ mot de passe actuel est oblogatoire.
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Nouveau mot de passe -->
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label class="form-label" for="new_password">Nouveau mot de passe</label>
+                            <div class="input-group mb-3 has-validation">
+                              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-lock"></i></span>
+                              <input
+                              id="new_password"
+                              autocomplete="false"
+                              [type]="new_passwordFieldType"
+                              class="form-control input"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(settingsForm,'new_password')"
+                              [class.is-valid]="!(new_password.errors?.['required'] || new_password.errors?.['pattern'])"
+                              formControlName="new_password">
+                              <span (click)="toggleShowNewPassword()" class="input-group-text" style="border-radius: 0px 5px 5px 0px;">
+                                <i [ngClass]="new_passwordIcon"></i>
+                              </span>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'new_password') && new_password.errors?.['required']">
+                                Le champ mot de passe est oblogatoire.
+                              </div>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'new_password') && new_password.errors?.['pattern']">
+                                Le mot de passe doit contenir au moins 8 caractères, des lettres minuscules et majuscules, des chiffres et des caractères spéciaux.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <label class="form-label" for="repeat_new_password">Confirmer le nouveau mot de passe</label>
+                            <div class="input-group has-validation">
+                              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-lock"></i></span>
+                              <input
+                              style="border-radius: 0;"
+                              id="repeat_new_password"
+                              autocomplete="false"
+                              [type]="new_passwordFieldType"
+                              class="form-control input"
+                              [class.is-invalid]="invalidTouchedDirtyFormControl(settingsForm,'repeat_new_password')
+                              || ( (repeat_new_password.touched || repeat_new_password.dirty)
+                              && new_password.value !== ''
+                              && new_password.value !== repeat_new_password.value)"
+                              [class.is-valid]="!(new_password.errors?.['required'] || (new_password.value !== repeat_new_password.value))"
+                              formControlName="repeat_new_password">
+                              <span (click)="toggleShowNewPassword()" class="input-group-text" style="border-radius: 0px 5px 5px 0px;">
+                                <i [ngClass]="new_passwordIcon"></i>
+                              </span>
+                              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(settingsForm,'repeat_new_password') && repeat_new_password.errors?.['required']">
+                                La confirmation de mot de passe est oblogatoire.
+                              </div>
+                            </div>
+                            <small class="text-danger mb-3 mt-2"
+                            *ngIf="
+                            (repeat_new_password.touched || repeat_new_password.dirty)
+                            && new_password.value !== ''
+                            && repeat_new_password.value !== ''
+                            && new_password.value !== repeat_new_password.value">
+                              La confirmation du mot de passe ne correspond pas
+                            </small>
+                          </div>
+                        </div>
+                        <!-- Changer -->
+                        <div class="d-flex justify-content-end align-items-end mt-5">
+                          <button
+                            [disabled]="settingsForm.invalid"
+                            (click)="changePassword()"
+                            class="btn d-block d-sm-inline-block postule"
+                            type="button">
+                            Changer
+                          </button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+</div>
+<div class="m-4" style="height: 50px;">
+</div>
+<app-footer></app-footer>
+
+<!-- toast -->
+<div class="toast" style="position: fixed; top: 15px; right: 20px;z-index: 1000;">
+  <div class="toast-header">
+    <span>
+      <i *ngIf="toast_status=='warning'" class="fa fa-warning text-warning fw-bold me-2"></i>
+      <i *ngIf="toast_status=='danger'" class="fa fa-times text-danger fw-bold me-2"></i>
+      <i *ngIf="toast_status=='success'" class="fa fa-check text-success fw-bold me-2"></i>
+    </span>
+    <strong class="me-auto">{{toast_header}}</strong>
+    <small class="text-muted">maintenant</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    {{toast_message}}
+  </div>
+</div>

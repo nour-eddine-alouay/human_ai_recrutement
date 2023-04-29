@@ -1,0 +1,282 @@
+<nav id="nav1" class="navbar navbar-expand-lg p-0">
+  <div class="container px-0">
+      <a class="navbar-brand fw-bold" href="#!"><img src="../../../assets/images/nav-logo.jpeg" class="logo" alt="" /></a>
+      <div>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><button routerLink="/" class="btn home mx-2">Home</button></li>
+            <li class="nav-item"><button routerLink="/login" class="btn inscription mx-2">Se connecter</button></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+      <div class="h-100">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/login">Offres d’emploi</a></li>
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/login">Actualités</a></li>
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/contact">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<div style="background-color:#F5F2F9">
+  <div class="row align-items-center justify-content-center mb-4 pb-5 mx-5">
+    <div class="col p-3 my-5">
+      <div class="illustration w-100 m-auto">
+          <img class="w-100" src="/assets/images/africa.png">
+      </div>
+    </div>
+    <div class="col col-lg-6 align-items-center">
+      <div class="card card-4 shadow p-3 my-5 bg-body rounded">
+        <div class="card-body">
+          <h2 class="title text-center py-2">Créer un compte</h2>
+          <div *ngIf="isAlertMessage" class="alert alert-danger text-center py-2" role="alert">
+            {{alertMessage}}
+          </div>
+          <form [formGroup]="registerForm">
+            <div class="row mb-3">
+
+              <div class="col">
+                <!-- nom -->
+                <label class="form-label" for="nom">Nom</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  <input
+                  id="nom"
+                  type="text"
+                  maxlength="255"
+                  class="form-control is-invalid"
+                  [class.is-invalid]="invalidTouchedDirtyFormControl(registerForm,'nom') && nom.errors?.['required']"
+                  [class.is-valid]="!(nom.errors?.['required'])"
+                  formControlName="nom">
+                  <div class="invalid-feedback">
+                    Le champ nom est oblogatoire.
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <!-- prenom -->
+                <label class="form-label" for="prenom">Prenom</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="prenomPrepend"><i class="fa fa-user"></i></span>
+                  <input
+                  id="prenom"
+                  type="text"
+                  maxlength="255"
+                  aria-describedby="prenomPrepend"
+                  class="form-control is-invalid"
+                  [class.is-invalid]="invalidTouchedDirtyFormControl(registerForm,'prenom') && prenom.errors?.['required']"
+                  [class.is-valid]="!(prenom.errors?.['required'])"
+                  formControlName="prenom">
+                  <div class="invalid-feedback">
+                    Le champ prenom est oblogatoire.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email input -->
+            <label class="form-label" for="email">Email</label>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-envelope"></i></span>
+              <input
+              (blur)="isEmailUnique()"
+              id="email"
+              type="email"
+              class="form-control"
+              [class.is-invalid]="invalidTouchedDirtyFormControl(registerForm,'email')"
+              [class.is-valid]="!(email.errors?.['required'] || email.errors?.['email'])"
+              formControlName="email">
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(registerForm,'email') && email.errors?.['required']">
+                Le champ email est oblogatoire.
+              </div>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(registerForm,'email') && email.errors?.['email']">
+                Le champ email est invalide.
+              </div>
+            </div>
+
+            <label class="form-label" for="password">Mot de passe</label>
+            <div class="input-group mb-3 has-validation">
+              <span class="input-group-text" id="passwordPrepend"><i class="fa fa-lock"></i></span>
+              <input
+              id="password"
+              autocomplete="false"
+              [type]="passwordFieldType"
+              aria-describedby="passwordPrepend"
+              class="form-control input"
+              [class.is-invalid]="invalidTouchedDirtyFormControl(registerForm,'password')"
+              [class.is-valid]="!(password.errors?.['required'] || password.errors?.['pattern'])"
+              formControlName="password">
+              <span (click)="toggleShowPassword()" class="input-group-text"><i [ngClass]="passwordIcon"></i></span>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(registerForm,'password') && password.errors?.['required']">
+                Le champ mot de passe est oblogatoire.
+              </div>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(registerForm,'password') && password.errors?.['pattern']">
+                Le mot de passe doit contenir au moins 8 caractères, des lettres minuscules et majuscules, des chiffres et des caractères spéciaux.
+              </div>
+            </div>
+
+            <label class="form-label" for="repeatPassword">Confirmer le mot de passe</label>
+            <div class="input-group has-validation">
+              <span class="input-group-text" id="repeatPasswordPrepend"><i class="fa fa-lock"></i></span>
+              <input
+              style="border-radius: 0;"
+              id="repeatPassword"
+              autocomplete="false"
+              [type]="passwordFieldType"
+              aria-describedby="repeatPasswordPrepend"
+              class="form-control input"
+              [class.is-invalid]="invalidTouchedDirtyFormControl(registerForm,'repeatPassword')
+              || ( (repeatPassword.touched || repeatPassword.dirty)
+              && password.value !== ''
+              && password.value !== repeatPassword.value)"
+              [class.is-valid]="!(password.errors?.['required'] || (password.value !== repeatPassword.value))"
+              formControlName="repeatPassword">
+              <span (click)="toggleShowPassword()" class="input-group-text"><i [ngClass]="passwordIcon"></i></span>
+              <div class="invalid-feedback" *ngIf="invalidTouchedDirtyFormControl(registerForm,'repeatPassword') && repeatPassword.errors?.['required']">
+                La confirmation de mot de passe est oblogatoire.
+              </div>
+            </div>
+            <small class="text-danger mb-3 mt-2"
+            *ngIf="
+            (repeatPassword.touched || repeatPassword.dirty)
+            && password.value !== ''
+            && repeatPassword.value !== ''
+            && password.value !== repeatPassword.value">
+              La confirmation du mot de passe ne correspond pas
+            </small>
+
+            <!-- Submit button -->
+            <div class="text-center mt-3">
+              <button
+              [disabled]="registerForm.invalid || password.value !== repeatPassword.value || isAlertMessage"
+              type="button"
+              class="btn inscription mx-2"
+              data-bs-toggle="modal"
+              data-bs-target="#completeRegistration">
+                Continuer
+              </button>
+            </div>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p class="my-2">Ou s'inscrire en utilisant</p>
+              <button type="button" class="btn mx-1 facebook">
+                <i class="fa fa-facebook-f"></i>
+              </button>
+              <button type="button" class="btn mx-1 google" (click)="registerWithGoogle()">
+                <i class="fa fa-google"></i>
+              </button>
+            </div>
+
+            <!-- have already an account -->
+            <div class="text-center">
+              <div class="mt-2">
+                Avez-vous déjà un compte ? <span routerLink="/login" class="link">Se connecter</span>
+              </div>
+            </div>
+          </form>
+          <div class="modal fade" id="completeRegistration" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5">Completez votre inscription</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="completeRegisterForm">
+                    <label class="small form-label" for="pays">Pays</label>
+                    <div class="input-group has-validation">
+                      <select
+                        id="pays"
+                        formControlName="pays"
+                        class="form-select ps-3 mb-4 rounded shadow-sm" >
+                        <option disabled=""> Sélectionnez votre pays</option>
+                        <option *ngFor="let pays of paysList"
+                          [selected]="pays.code === 'MA'"
+                          [value]="pays.code">
+                            {{pays.name}}
+                        </option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Le champ pays est oblogatoire.
+                      </div>
+                    </div>
+                    <select
+                    class="form-select px-4 rounded shadow-sm"
+                    formControlName="typeCompte"
+                    >
+                      <option class="opt" value="candidat" [selected]="true">Je cherche un emploi</option>
+                      <option class="opt" value="recruteur">Je veux recruter</option>
+                    </select>
+
+                    <!-- candidat -->
+                    <div *ngIf="typeCompte.value==='candidat'">
+                      <!-- profession -->
+                      <label class="small form-label mt-4" for="profession">Profession</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="professionPrepend"><i class="fa fa-briefcase"></i></span>
+                        <input
+                        id="profession"
+                        type="text"
+                        aria-describedby="professionPrepend"
+                        class="form-control"
+                        formControlName="profession">
+                        <div class="invalid-feedback">
+                          Le champ profession est oblogatoire.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- recruteur -->
+                    <div *ngIf="typeCompte.value==='recruteur'">
+                      <!-- site -->
+                      <label class="small form-label mt-4" for="site">URL de votre site</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" style="border-radius: 5px 0px 0px 5px;"><i class="fa fa-globe"></i></span>
+                        <input
+                        id="site"
+                        type="text"
+                        placeholder="www.exemple.com"
+                        class="form-control"
+                        formControlName="site">
+                      </div>
+                      <!-- domaine -->
+                      <div *ngIf="typeCompte.value==='recruteur'">
+                        <label class="small form-label" for="domaine">Domaine d'activié</label>
+                        <div class="input-group has-validation">
+                          <select
+                          id="domaine"
+                          formControlName="domaine"
+                          class="form-select px-4 rounded shadow-sm">
+                            &gt;
+                            <option disabled="">Choisir votre domaine</option>
+                            <option
+                            *ngFor="let domaine of domaines"
+                            value="{{domaine.value}}">
+                                {{domaine.name}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                  <button type="button" id="closeModal" class="btn connexion" data-bs-dismiss="modal">Retour</button>
+                  <button
+                  [disabled]="completeRegisterForm.invalid"
+                  type="button"
+                  (click)="register()"
+                  class="btn inscription">S'inscrire</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

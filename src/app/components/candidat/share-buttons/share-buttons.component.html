@@ -1,0 +1,33 @@
+<div class="p-2">
+  <div class="d-flex justify-content-between align-items-center">
+    <h5 class="ms-2">Partager</h5>
+    <button class="btn" (click)="onClose()">
+      <i class="bi bi-x" style="font-size: 25px; font-weight: bolder"></i>
+    </button>
+  </div>
+  <div class="d-flex justify-content-center py-3">
+    <share-buttons
+      [url]="customUrl"
+      [include]="[
+        'copy',
+        'facebook',
+        'email',
+        'messenger',
+        'linkedin',
+        'telegram',
+        'twitter',
+        'whatsapp'
+      ]"
+    >
+    </share-buttons>
+  </div>
+  <div class="d-flex justify-content-center py-3">
+    <input
+      type="url"
+      class="form-control"
+      value="{{ customUrl }}"
+      readonly
+      style="width: 95%"
+    />
+  </div>
+</div>

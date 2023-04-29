@@ -1,0 +1,214 @@
+<app-navbar-candidat></app-navbar-candidat>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+   <div class="container px-5 h-100">
+      <div class="h-100">
+         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/home">Offres d’emploi</a></li>
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/entreprises">Entreprises</a></li>
+            <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/actualites">Actualités</a></li>
+         </ul>
+      </div>
+   </div>
+</nav>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+<div class="container my-4">
+   <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+      <div class="col-md-3">
+         <div class="card radius-10 border-start border-0 border-3 border-info">
+            <div class="card-body">
+               <div class="d-flex align-items-center">
+                  <div>
+                     <p class="mb-0 text-secondary">Total</p>
+                     <h4 class="my-1 text-info">11</h4>
+                     <p class="mb-0 font-13"></p>
+                  </div>
+                  <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class="fa fa-send"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card radius-10 border-start border-0 border-3 border-warning">
+           <div class="card-body">
+              <div class="d-flex align-items-center">
+                 <div>
+                    <p class="mb-0 text-secondary">En Attentes</p>
+                    <h4 class="my-1 text-warning">3</h4>
+                    <p class="mb-0 font-13"></p>
+                 </div>
+                 <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto"><i class="fa fa-hourglass"></i>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card radius-10 border-start border-0 border-3 border-success">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div>
+                <p class="mb-0 text-secondary">Acceptées</p>
+                <h4 class="my-1 text-success">4</h4>
+                <p class="mb-0 font-13"></p>
+              </div>
+              <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class="fa fa-check"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+         <div class="card radius-10 border-start border-0 border-3 border-danger">
+            <div class="card-body">
+               <div class="d-flex align-items-center">
+                  <div>
+                     <p class="mb-0 text-secondary">Rejetées</p>
+                     <h4 class="my-1 text-danger">4</h4>
+                     <p class="mb-0 font-13"></p>
+                  </div>
+                  <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class="fa fa-times"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="container text-center" style="background-color: #F8F9FA;">
+   <div class="row my-4 px-3">
+      <div class="col">
+         <div class="">
+            <h5 class="text-start">Mes candidatures <span class="text-muted fw-normal"></span></h5>
+         </div>
+      </div>
+      <div class="col mot-cle">
+         <input
+          type="text"
+          placeholder="Mot clé (titre de poste, nom de société...)"
+          class="w-100"
+          [(ngModel)]="kaywords"
+          (input)="filterPostules(1)"/>
+      </div>
+   </div>
+   <div class="card">
+      <div class="row">
+         <div class="col-lg-12">
+            <div class="table-responsive">
+              <!-- classes for table : project-list-table table-hover -->
+              <table class="table table-nowrap align-middle table-borderless mb-0">
+                  <thead>
+                     <tr>
+                        <!-- <th scope="col" class="ps-4" style="width: 50px;">
+                           <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
+                        </th> -->
+                        <th scope="col" class="ps-4">
+                        </th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Entreprise</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date</th>
+                        <th scope="col" style="width: 200px;">Actions</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-hover" *ngFor="let postule of filteredPostules">
+                      <!-- <th scope="row" class="ps-4">
+                          <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck1" /><label class="form-check-label" for="contacusercheck1"></label></div>
+                      </th> -->
+                      <th scope="row" class="p-1">
+                        <div class="img-holder">
+                          <img
+                          class="offres-image rounded-circle"
+                          [src]="postule?.image_url?postule?.image_url:'../../../assets/images/default_profil/default_entreprise.png'">
+                        </div>
+                      </th>
+                      <td>
+                        <a class="text-body">
+                          {{firstNWordOfString(postule?.titre_offre,3)}}
+                        </a>
+                      </td>
+                      <td>
+                        <span class="flag-icon flag-icon-{{postule?.pays_entreprise?.toLowerCase()}} me-2"></span>
+                        {{firstNWordOfString(postule?.nom_entreprise,3)}}
+                      </td>
+                      <td>
+                        <span [ngClass]="
+                          {
+                            'badge-soft-warning': postule?.status_postule==='en attente',
+                            'badge-soft-success': postule?.status_postule==='acceptée',
+                            'badge-soft-danger': postule?.status_postule==='rejetée' || postule?.status_postule==='offre non disponible'
+                          }"
+                          class="badge mb-0">{{ postule?.status_postule }}
+                        </span>
+                      </td>
+                      <td>{{ postule?.date_postule }}</td>
+                      <td>
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                              <a
+                              (click)="voirOffreDetails(postule?.id_offre)"
+                              title="Voir détails d'offre"
+                              style="cursor:pointer"
+                              class="px-2 text-success"
+                              >
+                                <i class="bx bx-detail font-size-18"></i>
+                              </a>
+                            </li>
+                            <li class="list-inline-item">
+                              <a
+                                (click)="deletePostule(postule?.id_postule)"
+                                title="Supprimer la candidature"
+                                style="cursor:pointer"
+                                class="px-2 text-danger"
+                                >
+                                <i class="bx bx-trash-alt font-size-18"></i>
+                              </a>
+                            </li>
+                          </ul>
+                      </td>
+                    </tr>
+                    <tr *ngIf="filteredPostules?.length==0">
+                      <td></td><td></td>
+                      <td class="text-muted small">
+                        Vous n'avez pas encore postuler à une offre
+                      </td>
+                      <td></td><td></td>
+                    </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div *ngIf="filteredPostules && filteredPostules?.length!=0" class="d-flex justify-content-center">
+      <ul class="pagination mt-1 mb-0">
+        <li [class.disabled]="" class="page-item"><button (click)="changePage(currentPage-1)" [disabled]="currentPage==1" class="page-link" type="button">‹</button></li>
+        <li *ngFor="let page of pageNumbers" [class.active]="currentPage==page" class="active page-item">
+          <button (click)="changePage(page)" class="page-link" type="button">{{page}}</button>
+        </li>
+        <li [class.disabled]="" class="page-item"><button (click)="changePage(currentPage+1)" [disabled]="currentPage==totalPages" class="page-link" type="button">›</button></li>
+      </ul>
+    </div>
+</div>
+<div class="m-5" style="height: 50px;"></div>
+<app-footer></app-footer>
+
+
+<!-- toast -->
+<div class="toast" style="position: fixed; top: 15px; right: 20px;z-index: 1000;">
+  <div class="toast-header">
+    <span>
+      <i *ngIf="toast_status=='warning'" class="fa fa-warning text-warning fw-bold me-2"></i>
+      <i *ngIf="toast_status=='danger'" class="fa fa-times text-danger fw-bold me-2"></i>
+      <i *ngIf="toast_status=='success'" class="fa fa-check text-success fw-bold me-2"></i>
+    </span>
+    <strong class="me-auto">{{toast_header}}</strong>
+    <small class="text-muted">maintenant</small>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    {{toast_message}}
+  </div>
+</div>

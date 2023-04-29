@@ -1,0 +1,60 @@
+.logo{
+  height: 72.8px !important;
+}
+.inscription{
+  width: 120px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: var(--mantis);
+  color: white;
+}
+.connexion{
+  width: 120px;
+  border: solid 1px var(--mantis);
+  color: var(--mantis);
+  font-size: 14px;
+  font-weight: bold;
+}
+#nav1{
+  background-color: var(--violent-violet);
+}
+#nav2{
+  background-color: var(--laser);
+  height: 48px;
+}
+.nav-link{
+  color: black !important;
+}
+.navs:hover{
+  border-bottom: solid 2px black;
+}
+.recruteur{
+  border-left: solid 1px grey;
+}
+.bg{
+  background-image: linear-gradient(
+      rgb(120, 118, 165, 0.55),
+      rgb(120, 118, 165, 0.55)
+    ),url("../../../../assets/images/hero-recruteur.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 490px;
+}
+.feature {
+  background-color: var(--violent-violet);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  width: 3.5rem;
+  font-size: 1.5rem;
+}
+.padd{
+  padding-bottom: 110px !important;
+}
+.profil{
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: solid 1px grey;
+}

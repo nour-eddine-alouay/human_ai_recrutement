@@ -1,0 +1,215 @@
+<app-navbar-candidat></app-navbar-candidat>
+<nav id="nav2" class="navbar navbar-expand-lg p-0">
+  <div class="container px-5 h-100">
+    <div class="h-100">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 h-100">
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/home">Offres d’emploi</a></li>
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/entreprises">Entreprises</a></li>
+        <li class="nav-item h-100"><a class="nav-link navs mx-4 h-100" routerLink="/candidat/actualites">Actualités</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="p-3 page-container bg-light pb-5 pt-5">
+  <div class="mb-5 d-flex mx-5">
+      <div class="col-8">
+          <!-- A propos de l'entreprise -->
+          <div class="job-box mb-30 p-4">
+            <div class="card-header text-center mb-3 text-uppercase pt-4">À propos de l'entreprise <span class="fw-bold">{{entreprise?.nom}}</span></div>
+            <div class="text-center mb-3 font-italic">{{entreprise?.slogan}}</div>
+            <div class="card-body mb-5">
+                <div>
+                  <!-- À propos -->
+                  <div class="row gx-3 my-4">
+                    <!-- video -->
+                    <div class="col-md-12 text-center mt-3">
+                      <video *ngIf="video_url" preload="auto" height="300" controls>
+                        <source [src]="video_url" type="video/mp4">
+                      </video>
+                    </div>
+                    <!-- apercu -->
+                    <div class="col-md-12 mt-4">
+                        <span><i class="fa fa-info-o mx-2"></i></span>
+                        <span>
+                          {{entreprise?.apercu}}
+                        </span>
+                      </div>
+                    </div>
+                    <div class="mb-3 fw-bold text-success" >À propos</div><hr>
+                    <!-- Domaine d'activité et état Type d'entreprise  -->
+                    <div class="row gx-3 mb-3">
+                      <!-- Domaine d'activité -->
+                      <div class="col-md-6">
+                        <span><i class="fa fa-code-fork mx-2"></i></span>
+                        <span class="text-secondary">Domaine d'activité : </span>
+                        <span>{{domaine_name?domaine_name:''}}</span>
+                      </div>
+                      <!-- Type d'entreprise  -->
+                      <div class="col-md-6">
+                        <span><i class="fa fa-building-o mx-2"></i></span>
+                        <span class="text-secondary">Type d'entreprise : </span>
+                        <span>Grande entreprise</span>
+                      </div>
+                    </div>
+
+                    <!-- pays et ville -->
+                    <div class="row gx-3 mb-4">
+                      <!-- pays -->
+                      <div class="col-md-6">
+                        <span><i class="fa fa-globe mx-2"></i></span>
+                        <span class="text-secondary">Pays : </span>
+                        <span>{{pays_name?pays_name:''}}</span>
+                      </div>
+                      <!-- ville -->
+                      <div class="col-md-6">
+                        <span><i class="fa fa-home mx-2"></i></span>
+                        <span class="text-secondary">Adresse : </span>
+                        <span>{{entreprise?.adresse}}</span>
+                      </div>
+                    </div>
+
+                    <div class="mb-3 fw-bold text-success" >Contact</div><hr>
+                    <!-- contact -->
+                    <div class="row gx-3 mb-3">
+                      <!-- email -->
+                      <div class="col-md-6">
+                        <span><i class="fa fa-envelope mx-2"></i></span>
+                        <span class="text-secondary">Email: </span>
+                        <span>{{admin?.email_contact}}</span>
+                      </div>
+                      <!-- telephone -->
+                      <div class="col-md-6">
+                        <span><i class="fa fa-phone mx-2"></i></span>
+                        <span class="text-secondary">Telephone : </span>
+                        <span>{{admin?.telephone}}</span>
+                      </div>
+                    </div>
+
+                    <!-- site web -->
+                    <div class="mb-3 fw-bold text-success" >Site web</div><hr>
+                    <div class="row gx-3 mb-4">
+                      <!-- site -->
+                      <div class="col-md-6">
+                        <span><i class="fa fa-bookmark mx-2"></i></span>
+                        <span class="text-secondary">Site-web : </span>
+                        <a href="{{entreprise?.site}}" target="_blank">
+                          {{entreprise?.site}}
+                        </a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-4 ms-4">
+          <!-- logo -->
+          <div class="entreprise-card mb-4 mt-0">
+            <div class="header">
+              <div class="logo">
+                <img src="{{entreprise_image_url?entreprise_image_url:'../../../assets/images/default_profil/default_entreprise.png'}}" alt="Logo de l'entreprise">
+              </div>
+              <div class="nom">
+                {{ entreprise?.nom }}
+              </div>
+              <div *ngIf="entreprise?.slogan" class="text-muted text-center my-2">
+                {{ entreprise?.slogan }}
+              </div>
+            </div>
+            <div class="evaluation">
+              <div class="etoiles">
+                <i class="fa fa-star" (click)="setEvaluation(1)" [ngClass]="{active: evaluation >= 1}"></i>
+                <i class="fa fa-star" (click)="setEvaluation(2)" [ngClass]="{active: evaluation >= 2}"></i>
+                <i class="fa fa-star" (click)="setEvaluation(3)" [ngClass]="{active: evaluation >= 3}"></i>
+                <i class="fa fa-star" (click)="setEvaluation(4)" [ngClass]="{active: evaluation >= 4}"></i>
+                <i class="fa fa-star" (click)="setEvaluation(5)" [ngClass]="{active: evaluation >= 5}"></i>
+              </div>
+              <div class="boutons my-2">
+                <button class="suivre" (click)="suivreEntreprise()" [ngClass]="{active: suivre}">{{ suivre ? 'Ne plus suivre' : 'Suivre' }}</button>
+              </div>
+            </div>
+          </div>
+          <!-- Valeurs humaines -->
+          <div class="entreprise-card mb-4 mt-0">
+            <div class="card-heading mb-3">
+              <span class="card-title text-center fw-bold"> Valeurs Humaines </span>
+            </div>
+            <div class="card-body">
+              <span *ngFor="let val_des of valeurs_descriptions, let index=index">
+                <span
+                  *ngIf="val_des.star"
+                  class="badge bg-warning mx-1 py-1">
+                  {{val_des.valeur}}
+                </span>
+              </span>
+            </div>
+          </div>
+          <!-- Profile representant d'ntreprise -->
+          <div class="entreprise-card mb-4 mt-0">
+            <div class="card-heading text-center mb-3">
+              <span class="card-title fw-bold"> Représentant </span>
+            </div>
+            <div class="card-body text-center">
+              <img
+              class="rounded-circle mb-2 w-25"
+              [src]="admin_image_url?admin_image_url:'../../../assets/images/default_profil/monsieur.jpg'"
+              alt="photo de profil">
+              <div class="mt-3">
+                <span class="text-center"> <span class="text-uppercase">{{admin?.nom}}</span> {{admin?.prenom}}</span>
+                <p class="text-secondary mb-1">{{admin?.poste}}</p>
+              </div>
+              <div class="mt-2">
+                <i class="fa fa-linkedin-square text-primary mx-2"></i>
+                {{admin?.linkedin}}
+              </div>
+            </div>
+          </div>
+          <div class="suggest-box px-2 pt-2 mb-4">
+            <div class="card-heading mb-3 text-center">
+              <span class="card-icon">
+              </span>
+              <span class="card-title fw-bold"> Offres Récentes de {{entreprise?.nom.toUpperCase()}}</span>
+            </div>
+            <div class="petit-job-box">
+              <div *ngFor="let offre of offresRecentes" class="job-left my-2 d-flex align-items-center">
+                  <a (click)="voirOffreDetails(offre.id)" style="text-decoration: none;cursor:pointer;">
+                    <div class="img-holder me-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                      <img
+                      class="offres-image rounded-circle mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex"
+                      [src]="entreprise_image_url?entreprise_image_url:'../../../assets/images/default_profil/default_entreprise.png'">
+                    </div>
+                  </a>
+                  <div class="job-content">
+                      <h6 class="text-md-left">{{offre?.titre}}</h6>
+                      <ul class="d-flex text-capitalize ff-open-sans p-0">
+                        <li class="me-md-4">
+                          <span class="flag-icon flag-icon-{{offre?.pays?.toLowerCase()}}"></span>
+                        </li>
+                        <li class="">
+                            <i class="bi bi-geo-alt-fill"></i> {{ firstNWordOfString(offre?.adresse,2) }}
+                        </li>
+                      </ul>
+                      <ul class="d-flex text-capitalize ff-open-sans p-0">
+                        <li class="">
+                          <i class="bi bi-clock"></i> {{offre?.mode_travail}}
+                        </li>
+                        <li *ngIf="!offre?.hide_salaire" class="me-md-4">
+                          <i class="bi bi-cash"></i> {{offre?.min_salaire}}-{{offre?.max_salaire}} $
+                        </li>
+                        <li class="me-md-4" *ngIf="offre?.hide_salaire">
+                          <i class="bi bi-cash-stack me-2"></i> À discuter
+                        </li>
+                      </ul>
+                  </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button routerLink="/candidat/home" class="btn btn-sm postule my-3 border-radius">
+                Voir tout
+                <span><i class="fa fa-external-link mx-2"></i></span>
+              </button>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>
