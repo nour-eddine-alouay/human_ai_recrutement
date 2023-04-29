@@ -6,7 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/public/login/login.component';
 import { RegisterComponent } from './pages/public/register/register.component';
 import { ContactComponent } from './pages/public/contact/contact.component';
-import { ForgotPasswordComponent } from './pages/public/forgot-password/forgot-password/forgot-password.component';
+import { ForgotPasswordComponent } from './pages/public/forgot-password/forgot-password/forgot-password.component';;
+import { ResetPasswordComponent } from './pages/public/reset-password/reset-password/reset-password.component';
 // candidat
 import { AccueilCandidatComponent } from './pages/public/accueil-candidat/accueil-candidat.component';
 // recruteur
@@ -52,6 +53,9 @@ const routes: Routes = [
   },{
     path:'forgot',
     component: ForgotPasswordComponent
+  },{
+    path:'reset',
+    component: ResetPasswordComponent
   },
   {
     path:'contact',

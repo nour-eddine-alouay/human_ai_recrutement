@@ -43,6 +43,7 @@ import { NavCandidatComponent } from './components/candidat/navbar/navbar.compon
 import { NavbarRecruteurComponent } from './components/recruteur/navbar/navbar.component';
 import { ShareButtonsComponent } from './components/candidat/share-buttons/share-buttons.component';
 import { ForgotPasswordComponent } from './pages/public/forgot-password/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/public/reset-password/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ForgotPasswordComponent } from './pages/public/forgot-password/forgot-p
     AjouterOffreComponent,
     RecruteurOffreDetailsComponent,
     ShareButtonsComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
