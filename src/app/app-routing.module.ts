@@ -8,6 +8,7 @@ import { RegisterComponent } from './pages/public/register/register.component';
 import { ContactComponent } from './pages/public/contact/contact.component';
 import { ForgotPasswordComponent } from './pages/public/forgot-password/forgot-password/forgot-password.component';;
 import { ResetPasswordComponent } from './pages/public/reset-password/reset-password/reset-password.component';
+import { VerifyEmailComponent } from './pages/public/verify-email/verify-email.component';
 // candidat
 import { AccueilCandidatComponent } from './pages/public/accueil-candidat/accueil-candidat.component';
 // recruteur
@@ -46,6 +47,9 @@ const routes: Routes = [
   {
     path:'register',
     component: RegisterComponent
+  }, {
+    path:'verify',
+    component: VerifyEmailComponent
   },
   {
     path:'login',

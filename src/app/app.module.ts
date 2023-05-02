@@ -44,6 +44,7 @@ import { NavbarRecruteurComponent } from './components/recruteur/navbar/navbar.c
 import { ShareButtonsComponent } from './components/candidat/share-buttons/share-buttons.component';
 import { ForgotPasswordComponent } from './pages/public/forgot-password/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './pages/public/reset-password/reset-password/reset-password.component';
+import { VerifyEmailComponent } from './pages/public/verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { ResetPasswordComponent } from './pages/public/reset-password/reset-pass
     RecruteurOffreDetailsComponent,
     ShareButtonsComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,

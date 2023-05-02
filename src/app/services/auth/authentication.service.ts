@@ -31,7 +31,11 @@ export class AuthenticationService {
       password : user.password,
       pays : user.pays,
       profession : user.profession
+
+      
     });
+
+
   }
 
   // Register pour un candidat
