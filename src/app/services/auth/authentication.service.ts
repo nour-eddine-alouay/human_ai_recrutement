@@ -50,6 +50,7 @@ export class AuthenticationService {
       site : user.site,
       domaine : user.domaine
     });
+    
   }
   googleRegister(){
     return this.http.get(`${this.APIUrl}/register/google`)

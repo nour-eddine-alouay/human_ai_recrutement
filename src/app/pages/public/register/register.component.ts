@@ -4,13 +4,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/auth/authentication.service';
+import * as nodemailer from 'nodemailer';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
+
 export class RegisterComponent implements OnInit{
+
+
+ 
+
 
   registerForm !: FormGroup
   completeRegisterForm !: FormGroup
@@ -161,7 +167,7 @@ export class RegisterComponent implements OnInit{
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
     this.passwordIcon = this.passwordIcon === 'fa fa-eye' ? 'fa fa-eye-slash' : 'fa fa-eye';
   }
-
+  
   paysList = [
     {"name": "Afghanistan", "code": "AF"},
     {"name": "land Islands", "code": "AX"},
