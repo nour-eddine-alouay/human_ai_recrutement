@@ -31,7 +31,7 @@ L'application propose les interfaces suivantes :
   ![Capture d'écran 1](src/captures/page__accueil_employeur.jpg)
 - Page d'accueil pour candidat
 
-  ![Capture d'écran 1](src/captures/page__accueil_candidat.jpg)
+  ![Capture d'écran 1](src/captures/page_accueil_candidat.jpg)
 - Page d'inscription
 
   ![Capture d'écran 1](src/captures/inscription.jpg)
