@@ -45,15 +45,15 @@ L'application propose les interfaces suivantes :
 
   ![Capture d'écran 1](src/captures/creation_profile.jpg)
 
-  ![Capture d'écran 1](src/captures/creation_matching.jpg)
+  ![Capture d'écran 1](src/captures/creation_profile_matching.jpg)
 
-  ![Capture d'écran 1](src/captures/creation_param.jpg)
+  ![Capture d'écran 1](src/captures/creation_profile_param.jpg)
 - Page présentant les offres
 
   ![Capture d'écran 1](src/captures/offres.jpg)
 - Page détail de l'offre
 
-  ![Capture d'écran 1](src/captures/details_offres.jpg)
+  ![Capture d'écran 1](src/captures/detail_offres.jpg)
 - Page des entreprises
 
   ![Capture d'écran 1](src/captures/entreprises.jpg)
