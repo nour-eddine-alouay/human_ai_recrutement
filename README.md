@@ -26,6 +26,7 @@ L'application offre les fonctionnalités suivantes :
 L'application propose les interfaces suivantes :
 
 - Page d'accueil pour employeur
+  ![Capture d'écran 1](src/captures/page__accueil_employeur.jpg)
 - Page d'accueil pour candidat
 - Page d'inscription
 - Page de connexion
@@ -43,15 +44,6 @@ L'application propose les interfaces suivantes :
 - Page du profil d'un candidat
 - Page d'ajout d'une offre
 
-## Capture d'écran
-
-![Capture d'écran 1](chemin/vers/capture1.png)
-_Description de la capture d'écran 1._
-
-![Capture d'écran 2](chemin/vers/capture2.png)
-_Description de la capture d'écran 2._
-
-<!-- Ajoutez autant de captures d'écran que nécessaire en suivant la même structure. -->
 
 ## Installation
 
