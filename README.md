@@ -30,21 +30,71 @@ L'application propose les interfaces suivantes :
   
   ![Capture d'écran 1](src/captures/page__accueil_employeur.jpg)
 - Page d'accueil pour candidat
+
+  ![Capture d'écran 1](src/captures/page__accueil_candidat.jpg)
 - Page d'inscription
+
+  ![Capture d'écran 1](src/captures/inscription.jpg)
 - Page de connexion
+
+  ![Capture d'écran 1](src/captures/connexion.jpg)
 - Page de contact du support
+
+  ![Capture d'écran 1](src/captures/contact.jpg)
 - Page de création de profil candidat
+
+  ![Capture d'écran 1](src/captures/creation_profile.jpg)
+
+  ![Capture d'écran 1](src/captures/creation_matching.jpg)
+
+  ![Capture d'écran 1](src/captures/creation_param.jpg)
 - Page présentant les offres
+
+  ![Capture d'écran 1](src/captures/offres.jpg)
 - Page détail de l'offre
+
+  ![Capture d'écran 1](src/captures/details_offres.jpg)
 - Page des entreprises
+
+  ![Capture d'écran 1](src/captures/entreprises.jpg)
 - Page des candidatures d'un candidat
+
+  ![Capture d'écran 1](src/captures/candidatures.jpg)
 - Page des enregistrements
+
+  ![Capture d'écran 1](src/captures/enregistrements.jpg)
 - Page de création de profil entreprise
+
+  ![Capture d'écran 1](src/captures/creation_entreprise.jpg)
+
+  ![Capture d'écran 1](src/captures/creation_entreprise_matching.jpg)
+
+  ![Capture d'écran 1](src/captures/creation_entreprise_representant.jpg)
+
+  ![Capture d'écran 1](src/captures/creation_entreprise_param.jpg)
 - Page des profils candidat
+
+  ![Capture d'écran 1](src/captures/profiles.jpg)
+
+  ![Capture d'écran 1](src/captures/profile_candidat_valeur.jpg)
 - Page des offres de l'entreprise
+
+  ![Capture d'écran 1](src/captures/offres_entreprises.jpg)
 - Page de visualisation des candidatures pour une offre
+
+  ![Capture d'écran 1](src/captures/candidatures_offre.jpg)
 - Page du profil d'un candidat
+
+  ![Capture d'écran 1](src/captures/profile_candidat.jpg)
+
+  ![Capture d'écran 1](src/captures/profile_candidat_valeur.jpg)
 - Page d'ajout d'une offre
+
+  ![Capture d'écran 1](src/captures/ajout_offre.jpg)
+
+  ![Capture d'écran 1](src/captures/ajout_offre2.jpg)
+
+  ![Capture d'écran 1](src/captures/ajout_offre3.jpg)
 
 
 ## Installation
