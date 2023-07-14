@@ -26,6 +26,8 @@ L'application offre les fonctionnalités suivantes :
 L'application propose les interfaces suivantes :
 
 - Page d'accueil pour employeur
+
+  
   ![Capture d'écran 1](src/captures/page__accueil_employeur.jpg)
 - Page d'accueil pour candidat
 - Page d'inscription
